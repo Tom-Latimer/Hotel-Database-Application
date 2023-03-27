@@ -1,3 +1,4 @@
+/* Table Creation */
 CREATE TABLE Hotel_Chain (
 	chain_name VARCHAR(20) NOT NULL,
 	street_number Numeric(4,0),
@@ -13,6 +14,7 @@ CREATE TABLE Hotel_Chain (
 CREATE TABLE Hotel (
 	chain_name VARCHAR(20) NOT NUll,
 	hotel_id SERIAL,
+	hotel_name VARCHAR(20),
 	rating NUMERIC(2,1),
 	street_number NUMERIC(4,0),
 	street_name VARCHAR,
@@ -173,6 +175,8 @@ CREATE TABLE Registers (
 	FOREIGN KEY (booking_id) REFERENCES Booking (booking_id)
 );
 
+/* Triggers */
+
 create function check_chain_name()
 	returns trigger as
 $body$
@@ -212,3 +216,19 @@ $body$ LANGUAGE plpgsql;
 create trigger hotel_id_check before insert on Room
 for each row
 execute procedure check_hotel_id();
+
+/* Views */
+
+create view room_capacity as
+select hotel_name,room_id,capacity
+from (select hotel.hotel_name,room_id,capacity
+	 from hotel,room
+	 where room.hotel_id = hotel.hotel_id) as temp;
+
+create view room_availability as 
+select city as area, count(room_id) as available
+from (select room_id, city
+	  from room,hotel
+	  where room.hotel_id = hotel.hotel_id
+	  and room.available =true) as temp
+group by area;
