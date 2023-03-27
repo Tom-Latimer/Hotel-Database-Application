@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Directory</title>
-        <link rel = "stylesheet" href = "./index.css">
+        <link rel = "stylesheet" href = "./directorystyle.css">
     </head>
 
     <body>
@@ -10,8 +10,8 @@
                 <h1>Welcome!</h1>
                 <h2>Sign in:</h2>
 
-                <button class = "button userbutton"> I am a customer </button>
-                <button class = "button userbutton"> I am an employee </button>
+                <a href = "customerhome.jsp" class = "button userbutton"> I am a customer </a>
+                <a href = "employeehome.jsp" class = "button userbutton"> I am an employee </a>
             </div>
         </div>
 
