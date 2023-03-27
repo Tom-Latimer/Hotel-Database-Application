@@ -1,0 +1,46 @@
+body {
+    background: white;
+}
+
+.container {
+    height: 200px;
+    border: none;
+    margin-right: auto;
+    margin-left: auto;
+  }
+.center {
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.button {
+    background-color: black;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: auto;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.userbutton {
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+}
+
+.userbutton:hover {
+    background-color: white;
+    color: black;
+}
