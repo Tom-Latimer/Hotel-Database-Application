@@ -173,3 +173,42 @@ CREATE TABLE Registers (
 	FOREIGN KEY (booking_id) REFERENCES Booking (booking_id)
 );
 
+create function check_chain_name()
+	returns trigger as
+$body$
+begin
+
+if NEW.chain_name not in (select chain_name from hotel_chain)
+then raise exception 'Hotel must belong to an established chain.';
+end if;
+
+return new;
+
+end
+$body$ LANGUAGE plpgsql;
+
+create trigger chain_name_check before insert on Hotel
+for each row
+execute procedure check_chain_name();
+
+create trigger chain_name_check before insert on Room
+for each row
+execute procedure check_chain_name();
+
+create function check_hotel_id()
+returns trigger as
+$body$
+begin
+
+if NEW.hotel_id not in (select hotel_id from hotel)
+then raise exception 'Room must belong to a valid hotel.';
+end if;
+
+return new;
+
+end
+$body$ LANGUAGE plpgsql;
+
+create trigger hotel_id_check before insert on Room
+for each row
+execute procedure check_hotel_id();
