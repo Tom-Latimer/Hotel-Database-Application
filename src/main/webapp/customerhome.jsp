@@ -6,9 +6,10 @@
 
     <body>
         <div class="topnav">
-            <a href="#">Link</a>
-            <a href="#">Link</a>
-            <a href="#">Link</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Browse</a>
+            <a href="#">Home</a>
         </div>
     </body>
 </html>
