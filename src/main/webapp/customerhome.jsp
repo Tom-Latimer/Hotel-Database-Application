@@ -28,6 +28,17 @@
                 <i class="fa fa-fw fa-bars"></i>
             </a>
         </div>
+        <div class = "centerelements" id = "content">
+            <form>
+                <input type = "text" id = "locationcity" name = "locationcity" placeholder = "Enter your destination city"><br>
+                <input type = "number" id = "capacityguests" name = "capacityguests" placeholder = "Number of guests"><br>
+                <label for = "checkindate">Check in date:</label>
+                <input type = "date" id = "checkindate" name = "checkindate" placeholder = "Check in date:"><br>
+                <label for = "checkoutdate">Check out date:</label>
+                <input type = "date" id = "checkoutdate" name = "checkoutdate" placeholder = "Check out date:"><br>
+                <input type = "submit" value = "Search">
+            </form>
+        </div>
         <script>
             function myFunction() {
                 var x = document.getElementById("myTopnav");

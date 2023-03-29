@@ -118,3 +118,95 @@ body {
     position: sticky;
     width: 200px;
 }
+
+.centerelements {
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+input[type=text] {
+    font-family: 'Glacial Indifference', sans-serif;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    color: #2E2A24;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+
+input[type=number] {
+    font-family: 'Glacial Indifference', sans-serif;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    color: #2E2A24;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+input[type=number]:focus {
+  border: 3px solid #555;
+}
+
+input[type=date] {
+    font-family: 'Glacial Indifference', sans-serif;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    color: #2E2A24;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+input[type=date]:focus {
+  border: 3px solid #555;
+}
+
+label {
+    font-family: 'Glacial Indifference', sans-serif;
+    color: #2E2A24;
+    float: left;
+    font-weight: bold;
+}
+
+input[type = submit] {
+    background-color: #29335C;
+    border: none;
+    border-radius: 30px;
+    color: #f2f2f2;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: auto;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    vertical-align: middle;
+    border: 2px solid #29335C;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: bold;
+}
+
+input[type = submit]:hover {
+    background-color: #f2f2f2;
+    color: #29335C;
+}
