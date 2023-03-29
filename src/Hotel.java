@@ -2,14 +2,21 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "hotel_chain")
-public class Hotel_Chain {
+@Table(name = "hotel")
+public class Hotel {
 
     @Id
-    @Column(name = "chain_name", nullable = false, length = 20)
-    private String chainName;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "hotel_id")
+    private int hotelId;
 
-    @Column(name = "street_number", precision = 4, scale = 0)
+    @Column(name = "hotel_name", length = 20)
+    private String hotelName;
+
+    @Column(name = "rating", precision = 2, scale = 1)
+    private BigDecimal rating;
+
+    @Column(name = "street_number", precision = 4)
     private BigDecimal streetNumber;
 
     @Column(name = "street_name")
@@ -30,10 +37,17 @@ public class Hotel_Chain {
     @Column(name = "email_addresses")
     private String emailAddresses;
 
-    // Constructor, getters, and setters
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "chain_name")
+    private Hotel_Chain hotelChain;
 
-    public void Hotel_Chain(String chainName, BigDecimal streetNumber, String streetName, String city, String province, String postal, String phoneNumbers, String emailAddresses) {
-        this.chainName = chainName;
+    // constructor, getters, setters, etc.
+
+    public Hotel(int hotelId, String hotelName, BigDecimal rating, BigDecimal streetNumber, String streetName, String city, String province, String postal, String phoneNumbers, String emailAddresses, Hotel_Chain hotelChain) {
+        this.hotelId = hotelId;
+        this.hotelName = hotelName;
+        this.rating = rating;
         this.streetNumber = streetNumber;
         this.streetName = streetName;
         this.city = city;
@@ -41,18 +55,31 @@ public class Hotel_Chain {
         this.postal = postal;
         this.phoneNumbers = phoneNumbers;
         this.emailAddresses = emailAddresses;
+        this.hotelChain = hotelChain;
     }
 
-    public Hotel_Chain(String chainName) {
-        this.chainName = chainName;
+    public int getHotelId() {
+        return hotelId;
     }
 
-    public String getChainName() {
-        return chainName;
+    public void setHotelId(int hotelId) {
+        this.hotelId = hotelId;
     }
 
-    public void setChainName(String chainName) {
-        this.chainName = chainName;
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
+    }
+
+    public BigDecimal getRating() {
+        return rating;
+    }
+
+    public void setRating(BigDecimal rating) {
+        this.rating = rating;
     }
 
     public BigDecimal getStreetNumber() {
@@ -109,5 +136,13 @@ public class Hotel_Chain {
 
     public void setEmailAddresses(String emailAddresses) {
         this.emailAddresses = emailAddresses;
+    }
+
+    public Hotel_Chain getHotelChain() {
+        return hotelChain;
+    }
+
+    public void setHotelChain(Hotel_Chain hotel_chain) {
+        this.hotelChain = hotelChain;
     }
 }
