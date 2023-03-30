@@ -1,5 +1,8 @@
+package DBModel;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "hotel_chain")
@@ -29,6 +32,9 @@ public class Hotel_Chain {
 
     @Column(name = "email_addresses")
     private String emailAddresses;
+
+    @OneToMany(mappedBy = "hotel_chain",fetch = FetchType.LAZY)
+    private List<Hotel> hotelList;
 
     // Constructor, getters, and setters
 
@@ -109,5 +115,13 @@ public class Hotel_Chain {
 
     public void setEmailAddresses(String emailAddresses) {
         this.emailAddresses = emailAddresses;
+    }
+
+    public List<Hotel> getHotelList() {
+        return hotelList;
+    }
+
+    public void setHotelList(List<Hotel> hotelList) {
+        this.hotelList = hotelList;
     }
 }

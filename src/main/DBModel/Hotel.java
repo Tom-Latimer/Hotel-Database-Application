@@ -1,14 +1,15 @@
+package DBModel;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "hotel")
 public class Hotel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "hotel_id")
-    private int hotelId;
+    @EmbeddedId
+    private HotelId hotel_id;
 
     @Column(name = "hotel_name", length = 20)
     private String hotelName;
@@ -37,15 +38,25 @@ public class Hotel {
     @Column(name = "email_addresses")
     private String emailAddresses;
 
-    @Id
+    @MapsId("hotel_id")
+    @JoinColumn(name = "chain_name", referencedColumnName = "chain_name")
     @ManyToOne
-    @JoinColumn(name = "chain_name")
-    private Hotel_Chain hotelChain;
+    private Hotel_Chain hotel_chain;
+
+    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY)
+    private List<Works> employeeList;
+
+    @OneToOne(mappedBy = "hotel", fetch = FetchType.LAZY)
+    private Manages manager;
+
+    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY)
+    private List<Room> roomList;
+
 
     // constructor, getters, setters, etc.
 
-    public Hotel(int hotelId, String hotelName, BigDecimal rating, BigDecimal streetNumber, String streetName, String city, String province, String postal, String phoneNumbers, String emailAddresses, Hotel_Chain hotelChain) {
-        this.hotelId = hotelId;
+    public Hotel(HotelId hotel_id, String hotelName, BigDecimal rating, BigDecimal streetNumber, String streetName, String city, String province, String postal, String phoneNumbers, String emailAddresses) {
+        this.hotel_id = hotel_id;
         this.hotelName = hotelName;
         this.rating = rating;
         this.streetNumber = streetNumber;
@@ -55,15 +66,14 @@ public class Hotel {
         this.postal = postal;
         this.phoneNumbers = phoneNumbers;
         this.emailAddresses = emailAddresses;
-        this.hotelChain = hotelChain;
     }
 
-    public int getHotelId() {
-        return hotelId;
+    public HotelId getHotel_id() {
+        return hotel_id;
     }
 
-    public void setHotelId(int hotelId) {
-        this.hotelId = hotelId;
+    public void setHotel_id(HotelId hotel_id) {
+        this.hotel_id = hotel_id;
     }
 
     public String getHotelName() {
@@ -138,11 +148,12 @@ public class Hotel {
         this.emailAddresses = emailAddresses;
     }
 
-    public Hotel_Chain getHotelChain() {
-        return hotelChain;
+
+    public Hotel_Chain getHotel_chain() {
+        return hotel_chain;
     }
 
-    public void setHotelChain(Hotel_Chain hotel_chain) {
-        this.hotelChain = hotelChain;
+    public void setHotel_chain(Hotel_Chain hotel_chain) {
+        this.hotel_chain = hotel_chain;
     }
 }

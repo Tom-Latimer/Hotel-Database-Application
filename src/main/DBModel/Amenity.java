@@ -1,3 +1,5 @@
+package DBModel;
+
 import javax.persistence.*;
 
 @Entity
