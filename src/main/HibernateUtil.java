@@ -1,5 +1,6 @@
 package main;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -32,6 +33,10 @@ public class HibernateUtil {
     public static SessionFactory getSessionFactory() {
         if(sessionFactory == null) sessionFactory = buildSessionFactory();
         return sessionFactory;
+    }
+
+    public static Session getHibernateSession() {
+        return sessionFactory.openSession();
     }
 
 }
