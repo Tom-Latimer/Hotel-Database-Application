@@ -1,5 +1,7 @@
 body {
-    background: white;
+    background: #f7efe4;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: bold;
 }
 
 .container {
@@ -7,8 +9,7 @@ body {
     border: none;
     margin-right: auto;
     margin-left: auto;
-}
-
+  }
 .center {
     text-align: center;
     margin: 0;
@@ -20,28 +21,41 @@ body {
 }
 
 .button {
-    background-color: black;
-    border: 2px solid black;
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: bold;
+    background-color: #2E2A24;
+    border: none;
     border-radius: 30px;
-    color: white;
+    color: #F2F2F2;
     padding: 16px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: auto;
+    margin: 10px 20px;
     transition-duration: 0.4s;
     cursor: pointer;
     vertical-align: middle;
 }
 
 .userbutton {
-    background-color: black;
-    color: white;
-    border: 2px solid black;
+    background-color: #2E2A24;
+    color: #F2F2F2;
+    border: 2px solid #2E2A24;
 }
 
 .userbutton:hover {
-    background-color: white;
-    color: black;
+    background-color: #F2F2F2;
+    color: #2E2A24;
+}
+
+.userbutton1 {
+    background-color: #DB2B39;
+    color: #F2F2F2;
+    border: 2px solid #DB2B39;
+}
+
+.userbutton1:hover {
+    background-color: #F2F2F2;
+    color: #DB2B39;
 }
