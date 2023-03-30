@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /* Table Creation */
 CREATE TABLE Hotel_Chain (
 	chain_name VARCHAR(20) NOT NULL,
@@ -300,3 +302,258 @@ VALUES
 ('Silver Peak Hotels', 'Mountain View Lodge', 4.1, 2345, 'Mountain Road', 'Halifax', 'NS', 'B3K2Z4', '902-555-1234', 'info@mountainviewlodge.com'),
 ('Silver Peak Hotels', 'Silver Valley Inn', 3.8, 6789, 'Valley Street', 'Winnipeg', 'MB', 'R3B2E9', '204-555-1234', 'info@silvervalleyinn.com'),
 ('Silver Peak Hotels', 'The Silver Star Hotel', 4.7, 1111, 'Star Boulevard', 'Victoria', 'BC', 'V8W1N4', '250-555-1234', 'info@silverstarhotel.com');
+
+
+INSERT INTO Room (chain_name, hotel_id, price, capacity, view_type, available)
+VALUES
+('Blue Star Hotels', 1, 100.00, 1, FALSE, TRUE),
+('Blue Star Hotels', 1, 120.00, 2, TRUE, TRUE),
+('Blue Star Hotels', 1, 150.00, 3, TRUE, TRUE),
+('Blue Star Hotels', 1, 180.00, 4, FALSE, TRUE),
+('Blue Star Hotels', 1, 200.00, 5, TRUE, TRUE),
+('Blue Star Hotels', 1, 250.00, 6, FALSE, TRUE),
+
+('Blue Star Hotels', 2, 120.00, 2, FALSE, TRUE),
+('Blue Star Hotels', 2, 180.00, 4, TRUE, TRUE),
+('Blue Star Hotels', 2, 300.00, 6, TRUE, TRUE),
+('Blue Star Hotels', 2, 75.00,  1, FALSE, TRUE),
+('Blue Star Hotels', 2, 190.00, 3, FALSE, TRUE),
+
+('Blue Star Hotels', 3, 175.00, 2, TRUE, TRUE),
+('Blue Star Hotels', 3, 250.00, 4, TRUE, TRUE),
+('Blue Star Hotels', 3, 400.00, 6, FALSE, TRUE),
+('Blue Star Hotels', 3, 90.00,  1, FALSE, TRUE),
+('Blue Star Hotels', 3, 225.00, 4, FALSE, TRUE),
+
+('Blue Star Hotels', 4, 120.00, 2, TRUE, TRUE),
+('Blue Star Hotels', 4, 175.00, 4, TRUE, TRUE),
+('Blue Star Hotels', 4, 200.00, 4, FALSE, TRUE),
+('Blue Star Hotels', 4, 250.00, 6, TRUE, TRUE),
+('Blue Star Hotels', 4, 300.00, 6, FALSE, TRUE),
+
+('Blue Star Hotels', 5, 120.00, 2, TRUE, TRUE),
+('Blue Star Hotels', 5, 150.00, 2, TRUE, TRUE),
+('Blue Star Hotels', 5, 180.00, 3, TRUE, TRUE),
+('Blue Star Hotels', 5, 200.00, 4, FALSE, TRUE),
+('Blue Star Hotels', 5, 250.00, 4, TRUE, TRUE),
+
+('Blue Star Hotels', 6, 110.00, 2, FALSE, TRUE),
+('Blue Star Hotels', 6, 140.00, 2, TRUE, TRUE),
+('Blue Star Hotels', 6, 180.00, 3, TRUE, TRUE),
+('Blue Star Hotels', 6, 220.00, 4, TRUE, TRUE),
+('Blue Star Hotels', 6, 270.00, 4, TRUE, TRUE),
+
+('Blue Star Hotels', 7, 100.00, 2, FALSE, TRUE),
+('Blue Star Hotels', 7, 130.00, 2, TRUE, TRUE),
+('Blue Star Hotels', 7, 170.00, 3, TRUE, TRUE),
+('Blue Star Hotels', 7, 220.00, 4, FALSE, TRUE),
+('Blue Star Hotels', 7, 280.00, 4, TRUE, TRUE),
+
+('Blue Star Hotels', 8, 125.00, 2, FALSE, TRUE),
+('Blue Star Hotels', 8, 225.00, 4, TRUE, TRUE),
+('Blue Star Hotels', 8, 325.00, 6, FALSE, TRUE),
+('Blue Star Hotels', 8, 275.00, 3, TRUE, TRUE),
+('Blue Star Hotels', 8, 190.00, 2, FALSE, TRUE);
+
+INSERT INTO Room (chain_name, hotel_id, price, capacity, view_type, available)
+VALUES
+('Green Leaf Resorts', 9, 150.00, 2, TRUE, TRUE),
+('Green Leaf Resorts', 9, 200.00, 4, TRUE, TRUE),
+('Green Leaf Resorts', 9, 225.00, 4, FALSE, TRUE),
+('Green Leaf Resorts', 9, 275.00, 6, TRUE, TRUE),
+('Green Leaf Resorts', 9, 325.00, 6, FALSE, TRUE),
+
+('Green Leaf Resorts', 10, 100.00, 2, TRUE, TRUE),
+('Green Leaf Resorts', 10, 150.00, 4, TRUE, TRUE),
+('Green Leaf Resorts', 10, 175.00, 4, FALSE, TRUE),
+('Green Leaf Resorts', 10, 225.00, 6, TRUE, TRUE),
+('Green Leaf Resorts', 10, 275.00, 6, FALSE, TRUE),
+
+('Green Leaf Resorts', 11, 200.00, 2, TRUE, TRUE),
+('Green Leaf Resorts', 11, 250.00, 4, TRUE, TRUE),
+('Green Leaf Resorts', 11, 275.00, 4, FALSE, TRUE),
+('Green Leaf Resorts', 11, 325.00, 6, TRUE, TRUE),
+('Green Leaf Resorts', 11, 375.00, 6, FALSE, TRUE),
+
+('Green Leaf Resorts', 12, 175.00, 2, TRUE, TRUE),
+('Green Leaf Resorts', 12, 225.00, 4, TRUE, TRUE),
+('Green Leaf Resorts', 12, 250.00, 4, FALSE, TRUE),
+('Green Leaf Resorts', 12, 300.00, 6, TRUE, TRUE),
+('Green Leaf Resorts', 12, 350.00, 6, FALSE, TRUE),
+
+('Green Leaf Resorts', 13, 150.00, 2, TRUE, TRUE),
+('Green Leaf Resorts', 13, 200.00, 3, FALSE, TRUE),
+('Green Leaf Resorts', 13, 225.00, 4, FALSE, TRUE),
+('Green Leaf Resorts', 13, 275.00, 5, FALSE, TRUE),
+('Green Leaf Resorts', 13, 325.00, 6, FALSE, TRUE),
+
+('Green Leaf Resorts', 14, 100.00, 2, TRUE, TRUE),
+('Green Leaf Resorts', 14, 150.00, 3, TRUE, TRUE),
+('Green Leaf Resorts', 14, 175.00, 4, FALSE, TRUE),
+('Green Leaf Resorts', 14, 225.00, 5, TRUE, TRUE),
+('Green Leaf Resorts', 14, 275.00, 6, FALSE, TRUE),
+
+('Green Leaf Resorts', 15, 200.00, 3, TRUE, TRUE),
+('Green Leaf Resorts', 15, 250.00, 4, TRUE, TRUE),
+('Green Leaf Resorts', 15, 275.00, 5, FALSE, TRUE),
+('Green Leaf Resorts', 15, 325.00, 6, TRUE, TRUE),
+('Green Leaf Resorts', 15, 375.00, 6, FALSE, TRUE),
+
+('Green Leaf Resorts', 16, 175.00, 2, TRUE, TRUE),
+('Green Leaf Resorts', 16, 225.00, 3, TRUE, TRUE),
+('Green Leaf Resorts', 16, 250.00, 4, FALSE, TRUE),
+('Green Leaf Resorts', 16, 300.00, 5, TRUE, TRUE),
+('Green Leaf Resorts', 16, 350.00, 6, FALSE, TRUE);
+
+INSERT INTO Room (chain_name, hotel_id, price, capacity, view_type, available)
+VALUES
+('Red Rock Hotels', 17, 125.00, 2, FALSE, TRUE),
+('Red Rock Hotels', 17, 175.00, 3, TRUE, TRUE),
+('Red Rock Hotels', 17, 250.00, 4, TRUE, FALSE),
+('Red Rock Hotels', 17, 300.00, 5, TRUE, TRUE),
+('Red Rock Hotels', 17, 375.00, 6, FALSE, FALSE),
+
+('Red Rock Hotels', 18, 75.00, 2, FALSE, TRUE),
+('Red Rock Hotels', 18, 100.00, 3, TRUE, TRUE),
+('Red Rock Hotels', 18, 150.00, 4, FALSE, TRUE),
+('Red Rock Hotels', 18, 225.00, 5, TRUE, FALSE),
+('Red Rock Hotels', 18, 275.00, 6, TRUE, TRUE),
+
+('Red Rock Hotels', 19, 100.00, 2, FALSE, TRUE),
+('Red Rock Hotels', 19, 150.00, 3, TRUE, TRUE),
+('Red Rock Hotels', 19, 225.00, 4, TRUE, FALSE),
+('Red Rock Hotels', 19, 275.00, 5, TRUE, TRUE),
+('Red Rock Hotels', 19, 325.00, 6, FALSE, FALSE),
+
+('Red Rock Hotels', 20, 150.00, 2, FALSE, TRUE),
+('Red Rock Hotels', 20, 200.00, 3, TRUE, TRUE),
+('Red Rock Hotels', 20, 275.00, 4, TRUE, FALSE),
+('Red Rock Hotels', 20, 325.00, 5, TRUE, TRUE),
+('Red Rock Hotels', 20, 400.00, 6, FALSE, FALSE),
+
+('Red Rock Hotels', 21, 156.25, 2, TRUE, TRUE),
+('Red Rock Hotels', 21, 250.00, 4, FALSE, TRUE),
+('Red Rock Hotels', 21, 312.50, 6, TRUE, TRUE),
+('Red Rock Hotels', 21, 400.00, 8, FALSE, TRUE),
+('Red Rock Hotels', 21, 468.75, 10, TRUE, TRUE),
+
+('Red Rock Hotels', 22, 125.00, 2, TRUE, TRUE),
+('Red Rock Hotels', 22, 200.00, 4, FALSE, TRUE),
+('Red Rock Hotels', 22, 250.00, 6, TRUE, TRUE),
+('Red Rock Hotels', 22, 320.00, 8, FALSE, TRUE),
+('Red Rock Hotels', 22, 375.00, 10, TRUE, TRUE),
+
+('Red Rock Hotels', 23, 187.50, 2, TRUE, TRUE),
+('Red Rock Hotels', 23, 300.00, 4, FALSE, TRUE),
+('Red Rock Hotels', 23, 375.00, 6, TRUE, TRUE),
+('Red Rock Hotels', 23, 480.00, 8, FALSE, TRUE),
+('Red Rock Hotels', 23, 562.50, 10, TRUE, TRUE),
+
+('Red Rock Hotels', 24, 218.75, 2, TRUE, TRUE),
+('Red Rock Hotels', 24, 350.00, 4, FALSE, TRUE),
+('Red Rock Hotels', 24, 437.50, 6, TRUE, TRUE),
+('Red Rock Hotels', 24, 560.00, 8, FALSE, TRUE),
+('Red Rock Hotels', 24, 656.25, 10, TRUE, TRUE);
+
+INSERT INTO Room (chain_name, hotel_id, price, capacity, view_type, available)
+VALUES
+
+('Golden Sands Resorts', 25, 72.50, 1, FALSE, TRUE),
+('Golden Sands Resorts', 25, 52.50, 1, TRUE, TRUE),
+('Golden Sands Resorts', 25, 82.50, 1, FALSE, TRUE),
+('Golden Sands Resorts', 25, 62.50, 1, TRUE, TRUE),
+('Golden Sands Resorts', 25, 92.50, 1, FALSE, TRUE),
+
+('Golden Sands Resorts', 26, 100.00, 1, TRUE, TRUE),
+('Golden Sands Resorts', 26, 150.00, 2, FALSE, TRUE),
+('Golden Sands Resorts', 26, 200.00, 3, TRUE, TRUE),
+('Golden Sands Resorts', 26, 120.00, 2, FALSE, TRUE),
+('Golden Sands Resorts', 26, 250.00, 4, TRUE, TRUE),
+
+('Golden Sands Resorts', 27, 87.50, 1, TRUE, TRUE),
+('Golden Sands Resorts', 27, 67.50, 1, FALSE, TRUE),
+('Golden Sands Resorts', 27, 97.50, 1, TRUE, TRUE),
+('Golden Sands Resorts', 27, 77.50, 1, FALSE, TRUE),
+('Golden Sands Resorts', 27, 107.50, 1, TRUE, TRUE),
+
+('Golden Sands Resorts', 28, 75.00, 2, TRUE, TRUE),
+('Golden Sands Resorts', 28, 55.00, 1, FALSE, TRUE),
+('Golden Sands Resorts', 28, 85.00, 1, TRUE, TRUE),
+('Golden Sands Resorts', 28, 65.00, 1, FALSE, TRUE),
+('Golden Sands Resorts', 28, 95.00, 2, TRUE, TRUE),
+
+('Golden Sands Resorts', 29, 137.50, 2, TRUE, TRUE),
+('Golden Sands Resorts', 29, 171.88, 4, FALSE, TRUE),
+('Golden Sands Resorts', 29, 214.06, 6, TRUE, TRUE),
+('Golden Sands Resorts', 29, 228.13, 3, FALSE, TRUE),
+('Golden Sands Resorts', 29, 308.59, 8, FALSE, TRUE),
+
+('Golden Sands Resorts', 30, 143.75, 2, TRUE, TRUE),
+('Golden Sands Resorts', 30, 179.69, 4, FALSE, TRUE),
+('Golden Sands Resorts', 30, 224.61, 6, TRUE, TRUE),
+('Golden Sands Resorts', 30, 239.06, 3, FALSE, TRUE),
+('Golden Sands Resorts', 30, 322.27, 8, FALSE, TRUE),
+
+('Golden Sands Resorts', 31, 118.75, 2, TRUE, TRUE),
+('Golden Sands Resorts', 31, 148.44, 4, FALSE, TRUE),
+('Golden Sands Resorts', 31, 185.94, 6, TRUE, TRUE),
+('Golden Sands Resorts', 31, 198.44, 3, FALSE, TRUE),
+('Golden Sands Resorts', 31, 267.19, 8, FALSE, TRUE),
+
+('Golden Sands Resorts', 32, 106.25, 2, TRUE, TRUE),
+('Golden Sands Resorts', 32, 132.81, 4, FALSE, TRUE),
+('Golden Sands Resorts', 32, 166.02, 6, TRUE, TRUE),
+('Golden Sands Resorts', 32, 177.08, 3, FALSE, TRUE),
+('Golden Sands Resorts', 32, 239.06, 8, FALSE, TRUE);
+
+INSERT INTO Room (chain_name, hotel_id, price, capacity, view_type, available) VALUES
+
+('Silver Peak Hotels', 33, 500.00, 1, TRUE, TRUE),
+('Silver Peak Hotels', 33, 700.00, 2, FALSE, TRUE),
+('Silver Peak Hotels', 33, 1500.00, 4, TRUE, TRUE),
+('Silver Peak Hotels', 33, 3000.00, 6, FALSE, TRUE),
+('Silver Peak Hotels', 33, 6000.00, 8, TRUE, TRUE),
+
+('Silver Peak Hotels', 34, 1000.00, 2, FALSE, TRUE),
+('Silver Peak Hotels', 34, 2500.00, 4, TRUE, TRUE),
+('Silver Peak Hotels', 34, 5000.00, 6, FALSE, TRUE),
+('Silver Peak Hotels', 34, 10000.00, 8, TRUE, TRUE),
+('Silver Peak Hotels', 34, 15000.00, 10, FALSE, TRUE),
+
+('Silver Peak Hotels', 35, 2000.00, 2, TRUE, TRUE),
+('Silver Peak Hotels', 35, 4000.00, 4, FALSE, TRUE),
+('Silver Peak Hotels', 35, 8000.00, 6, TRUE, TRUE),
+('Silver Peak Hotels', 35, 1200.00, 8, FALSE, TRUE),
+('Silver Peak Hotels', 35, 2000.00, 10, TRUE, TRUE),
+
+('Silver Peak Hotels', 36, 500.00, 2, FALSE, TRUE),
+('Silver Peak Hotels', 36, 1000.00, 4, TRUE, TRUE),
+('Silver Peak Hotels', 36, 2000.00, 6, FALSE, TRUE),
+('Silver Peak Hotels', 36, 4000.00, 8, TRUE, TRUE),
+('Silver Peak Hotels', 36, 6000.00, 10, FALSE, TRUE),
+
+('Silver Peak Hotels', 37, 500.00, 2, TRUE, TRUE),
+('Silver Peak Hotels', 37, 800.00, 4, FALSE, TRUE),
+('Silver Peak Hotels', 37, 1000.00, 6, FALSE, FALSE),
+('Silver Peak Hotels', 37, 1500.00, 8, TRUE, FALSE),
+('Silver Peak Hotels', 37, 2000.00, 10, TRUE, TRUE),
+
+('Silver Peak Hotels', 38, 1000.00, 2, FALSE, FALSE),
+('Silver Peak Hotels', 38, 1500.00, 4, TRUE, TRUE),
+('Silver Peak Hotels', 38, 2000.00, 6, FALSE, TRUE),
+('Silver Peak Hotels', 38, 2500.00, 8, TRUE, TRUE),
+('Silver Peak Hotels', 38, 3000.00, 10, FALSE, FALSE),
+
+('Silver Peak Hotels', 39, 800.00, 2, TRUE, TRUE),
+('Silver Peak Hotels', 39, 1200.00, 4, FALSE, TRUE),
+('Silver Peak Hotels', 39, 1600.00, 6, TRUE, FALSE),
+('Silver Peak Hotels', 39, 2000.00, 8, FALSE, FALSE),
+('Silver Peak Hotels', 39, 2500.00, 10, TRUE, TRUE),
+
+('Silver Peak Hotels', 40, 2000.00, 2, TRUE, FALSE),
+('Silver Peak Hotels', 40, 2500.00, 4, FALSE, TRUE),
+('Silver Peak Hotels', 40, 3000.00, 6, FALSE, FALSE),
+('Silver Peak Hotels', 40, 4000.00, 8, TRUE, TRUE),
+('Silver Peak Hotels', 40, 5000.00, 10, TRUE, TRUE);
+
+
