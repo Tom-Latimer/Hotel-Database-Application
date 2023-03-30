@@ -4,7 +4,11 @@
   <groupId>org.example</groupId>
   <artifactId>Hotel_DBProject</artifactId>
   <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+    <version>1.0-SNAPSHOT</version>
   <name>Hotel_DBProject Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
@@ -31,5 +35,15 @@
 
   <build>
     <finalName>Hotel_DBProject</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>

@@ -1,54 +1,80 @@
+package main.DBModel;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "hotel_chain")
-public class Hotel_Chain {
+@Table(name = "hotel")
+public class Hotel {
+    @EmbeddedId
+    private HotelId id;
 
-    @Id
-    @Column(name = "chain_name", nullable = false, length = 20)
-    private String chainName;
+    @MapsId("chainName")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "chain_name", nullable = false)
+    private HotelChain chainName;
 
-    @Column(name = "street_number", nullable = true, precision = 4, scale = 0)
+    @Column(name = "hotel_name", length = 20)
+    private String hotelName;
+
+    @Column(name = "rating", precision = 2, scale = 1)
+    private BigDecimal rating;
+
+    @Column(name = "street_number", precision = 4)
     private BigDecimal streetNumber;
 
-    @Column(name = "street_name", nullable = true, length = 255)
+    @Lob
+    @Column(name = "street_name")
     private String streetName;
 
-    @Column(name = "city", nullable = true, length = 255)
+    @Lob
+    @Column(name = "city")
     private String city;
 
-    @Column(name = "province", nullable = true, length = 3)
+    @Column(name = "province", length = 2)
     private String province;
 
-    @Column(name = "postal", nullable = true, length = 6)
+    @Column(name = "postal", length = 6)
     private String postal;
 
-    @Column(name = "phone_numbers", nullable = true, length = 255)
+    @Lob
+    @Column(name = "phone_numbers")
     private String phoneNumbers;
 
-    @Column(name = "email_addresses", nullable = true, length = 255)
+    @Lob
+    @Column(name = "email_addresses")
     private String emailAddresses;
 
-    // Constructor, getters, and setters
-
-    public void Hotel_Chain(String chainName, BigDecimal streetNumber, String streetName, String city, String province, String postal, String phoneNumbers, String emailAddresses) {
-        this.chainName = chainName;
-        this.streetNumber = streetNumber;
-        this.streetName = streetName;
-        this.city = city;
-        this.province = province;
-        this.postal = postal;
-        this.phoneNumbers = phoneNumbers;
-        this.emailAddresses = emailAddresses;
+    public HotelId getId() {
+        return id;
     }
 
-    public String getChainName() {
+    public void setId(HotelId id) {
+        this.id = id;
+    }
+
+    public HotelChain getChainName() {
         return chainName;
     }
 
-    public void setChainName(String chainName) {
+    public void setChainName(HotelChain chainName) {
         this.chainName = chainName;
+    }
+
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
+    }
+
+    public BigDecimal getRating() {
+        return rating;
+    }
+
+    public void setRating(BigDecimal rating) {
+        this.rating = rating;
     }
 
     public BigDecimal getStreetNumber() {
@@ -106,4 +132,5 @@ public class Hotel_Chain {
     public void setEmailAddresses(String emailAddresses) {
         this.emailAddresses = emailAddresses;
     }
+
 }

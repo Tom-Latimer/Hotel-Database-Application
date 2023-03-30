@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- Connection settings -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/HotelApplication</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">postgres</property>
+
+        <!-- SQL dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+        <!-- Print executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <!-- Update database on startup -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Annotated entity classes -->
+        <mapping class="DBModel.Amenity"/>
+        <mapping class="DBModel.AmenityId"/>
+        <mapping class="DBModel.Book"/>
+        <mapping class="DBModel.BookId"/>
+        <mapping class="DBModel.Booking"/>
+        <mapping class="DBModel.Create"/>
+        <mapping class="DBModel.CreateId"/>
+        <mapping class="DBModel.Customer"/>
+        <mapping class="DBModel.Employee"/>
+        <mapping class="DBModel.Hotel"/>
+        <mapping class="DBModel.HotelChain"/>
+        <mapping class="DBModel.HotelId"/>
+        <mapping class="DBModel.Manage"/>
+        <mapping class="DBModel.ManageId"/>
+        <mapping class="DBModel.Pay"/>
+        <mapping class="DBModel.PayId"/>
+        <mapping class="DBModel.Problem"/>
+        <mapping class="DBModel.ProblemId"/>
+        <mapping class="DBModel.Register"/>
+        <mapping class="DBModel.RegisterId"/>
+        <mapping class="DBModel.Rent"/>
+        <mapping class="DBModel.RentId"/>
+        <mapping class="DBModel.Renting"/>
+        <mapping class="DBModel.Reserve"/>
+        <mapping class="DBModel.ReserveId"/>
+        <mapping class="DBModel.Room"/>
+        <mapping class="DBModel.RoomId"/>
+        <mapping class="DBModel.Work"/>
+        <mapping class="DBModel.WorkId"/>
+
+    </session-factory>
+</hibernate-configuration>

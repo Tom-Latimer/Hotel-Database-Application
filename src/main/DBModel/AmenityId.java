@@ -1,0 +1,71 @@
+package main.DBModel;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import java.io.Serializable;
+import java.util.Objects;
+
+@Embeddable
+public class AmenityId implements Serializable {
+    private static final long serialVersionUID = -1213771464703767306L;
+    @Column(name = "amen_type", nullable = false, length = 20)
+    private String amenType;
+
+    @Column(name = "chain_name", nullable = false, length = 20)
+    private String chainName;
+
+    @Column(name = "hotel_id", nullable = false)
+    private Integer hotelId;
+
+    @Column(name = "room_id", nullable = false)
+    private Integer roomId;
+
+    public String getAmenType() {
+        return amenType;
+    }
+
+    public void setAmenType(String amenType) {
+        this.amenType = amenType;
+    }
+
+    public String getChainName() {
+        return chainName;
+    }
+
+    public void setChainName(String chainName) {
+        this.chainName = chainName;
+    }
+
+    public Integer getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(Integer hotelId) {
+        this.hotelId = hotelId;
+    }
+
+    public Integer getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AmenityId entity = (AmenityId) o;
+        return Objects.equals(this.chainName, entity.chainName) &&
+                Objects.equals(this.amenType, entity.amenType) &&
+                Objects.equals(this.hotelId, entity.hotelId) &&
+                Objects.equals(this.roomId, entity.roomId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(chainName, amenType, hotelId, roomId);
+    }
+
+}
