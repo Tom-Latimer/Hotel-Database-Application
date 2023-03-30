@@ -6,7 +6,7 @@ CREATE TABLE Hotel_Chain (
 	city VARCHAR,
 	province VARCHAR(2),
 	postal VARCHAR(6),
-	Phone_numbers VARCHAR,
+	phone_numbers VARCHAR,
 	email_addresses VARCHAR,
 	primary key (chain_name)
 );
@@ -14,14 +14,14 @@ CREATE TABLE Hotel_Chain (
 CREATE TABLE Hotel (
 	chain_name VARCHAR(20) NOT NUll,
 	hotel_id SERIAL,
-	hotel_name VARCHAR(20),
+	hotel_name VARCHAR(30),
 	rating NUMERIC(2,1),
 	street_number NUMERIC(4,0),
 	street_name VARCHAR,
 	city VARCHAR,
 	province VARCHAR(2),
 	postal VARCHAR(6),
-	Phone_numbers VARCHAR,
+	phone_numbers VARCHAR,
 	email_addresses VARCHAR,
 	primary key (hotel_id,chain_name),
 	FOREIGN KEY (chain_name) REFERENCES Hotel_Chain (chain_name),
@@ -233,3 +233,70 @@ from (select room_id, city
 	  where room.hotel_id = hotel.hotel_id
 	  and room.available =true) as temp
 group by area;
+
+/* Data Insertion */
+
+INSERT INTO hotel_chain (chain_name, street_number, street_name, city, province, postal, phone_numbers, email_addresses)
+VALUES
+   ('Blue Star Hotels', 1234, 'Main Street', 'Toronto', 'ON', 'M5V2G3', '416-555-1234', 'info@bluestarhotels.com'),
+   ('Green Leaf Resorts', 5678, '1st Avenue', 'Vancouver', 'BC', 'V6B1A8', '604-555-5678', 'info@greenleafresorts.com'),
+   ('Red Rock Hotels', 9012, 'High Street', 'Calgary', 'AB', 'T2P1J9', '403-555-9012', 'info@redrockhotels.com'),
+   ('Golden Sands Resorts', 3456, 'Ocean Boulevard', 'Halifax', 'NS', 'B3H4R2', '902-555-3456', 'info@goldensandsresorts.com'),
+   ('Silver Peak Hotels', 7890, 'Mountain Road', 'Montreal', 'QC', 'G1B0C5', '403-555-7890', 'info@silverpeakhotels.com');
+
+INSERT INTO Hotel (chain_name, hotel_name, rating, street_number, street_name, city, province, postal, phone_numbers, email_addresses)
+VALUES
+('Blue Star Hotels', 'Ocean View Hotel', 4.1, 1001, 'Beach Road', 'Victoria', 'BC', 'V8W1W5', '250-555-1234', 'info@oceanviewhotel.com'),
+('Blue Star Hotels', 'Majestic Hotel', 2.9, 1234, 'Park Ave', 'Toronto', 'ON', 'M4T2N7', '416-555-5678', 'info@majestichotel.com'),
+('Blue Star Hotels', 'Sunrise Suites', 3.8, 4567, 'Sunrise Blvd', 'Halifax', 'NS', 'B3J3J5', '902-555-9101', 'info@sunrisesuites.com'),
+('Blue Star Hotels', 'Starlight Inn', 3.3, 7890, 'Orchard Rd', 'Montreal', 'QC', 'H3W2T2', '514-555-2468', 'info@starlightinn.com'),
+('Blue Star Hotels', 'Paradise Hotel', 4.5, 2345, 'Paradise Rd', 'Vancouver', 'BC', 'V6B3T6', '604-555-7890', 'info@paradisehotel.com'),
+('Blue Star Hotels', 'Seaside Resort', 2.5, 3456, 'Seaside Ave', 'St. Johns', 'NL', 'A1A1A1', '709-555-3456', 'info@seasideresort.com'),
+('Blue Star Hotels', 'Harbor View Inn', 3.6, 5678, 'Harbor St', 'Charlottetown', 'PE', 'C1A4A2', '902-555-5678', 'info@harborviewinn.com'),
+('Blue Star Hotels', 'Riverfront Hotel', 4.0, 6789, 'Riverfront Rd', 'Calgary', 'AB', 'T2G5A6', '403-555-2345', 'info@riverfronthotel.com');
+
+INSERT INTO Hotel (chain_name, hotel_name, rating, street_number, street_name, city, province, postal, phone_numbers, email_addresses)
+VALUES
+('Green Leaf Resorts', 'Green Leaf Resort Banff', 4.1, 1234, 'Banff Avenue', 'Banff', 'AB', 'T1L1A1', '403-555-1234', 'banff@greenleafresorts.com'),
+('Green Leaf Resorts', 'Green Leaf Resort Whistler', 3.9, 5678, 'Blackcomb Way', 'Whistler', 'BC', 'V0N1B4', '604-555-5678', 'whistler@greenleafresorts.com'),
+('Green Leaf Resorts', 'Green Leaf Resort Lake Louise', 3.2, 910, 'Bow Valley Parkway', 'Lake Louise', 'AB', 'T0L1E0', '403-555-9100', 'lakelouise@greenleafresorts.com'),
+('Green Leaf Resorts', 'Green Leaf Resort Canmore', 2.5, 4567, 'Bow Valley Trail', 'Canmore', 'AB', 'T1W1N5', '403-555-4567', 'canmore@greenleafresorts.com'),
+('Green Leaf Resorts', 'Green Leaf Resort Jasper', 3.8, 2468, 'Connaught Drive', 'Jasper', 'AB', 'T0E1E0', '780-555-2468', 'jasper@greenleafresorts.com'),
+('Green Leaf Resorts', 'Green Leaf Resort Fernie', 4.5, 369, 'Fernie Ski Hill Road', 'Fernie', 'BC', 'V0B1M0', '250-555-3690', 'fernie@greenleafresorts.com'),
+('Green Leaf Resorts', 'Green Leaf Resort Revelstoke', 4.8, 1010, 'Mackenzie Avenue', 'Revelstoke', 'BC', 'V0E2S0', '250-555-1010', 'revelstoke@greenleafresorts.com'),
+('Green Leaf Resorts', 'Green Leaf Resort Golden', 3.6, 246, 'Kicking Horse Trail', 'Golden', 'BC', 'V0A1H0', '250-555-2460', 'golden@greenleafresorts.com');
+
+
+INSERT INTO Hotel (chain_name, hotel_name, rating, street_number, street_name, city, province, postal, phone_numbers, email_addresses)
+VALUES
+('Red Rock Hotels', 'Red Rock Resort Toronto', 3.6, 123, 'Yonge Street', 'Toronto', 'ON', 'M5C1W6', '416-555-1234', 'toronto@redrockhotels.com'),
+('Red Rock Hotels', 'Red Rock Resort Vancouver', 4.1, 567, 'Granville Street', 'Vancouver', 'BC', 'V6C1W6', '604-555-5678', 'vancouver@redrockhotels.com'),
+('Red Rock Hotels', 'Red Rock Resort Calgary', 3.2, 910, '7th Avenue SW', 'Calgary', 'AB', 'T2P3N8', '403-555-9100', 'calgary@redrockhotels.com'),
+('Red Rock Hotels', 'Red Rock Resort Halifax', 2.5, 4567, 'Barrington Street', 'Halifax', 'NS', 'B3J1Z3', '902-555-4567', 'halifax@redrockhotels.com'),
+('Red Rock Hotels', 'Red Rock Resort Quebec City', 3.8, 2468, 'Rue Saint-Jean', 'Quebec City', 'QC', 'G1V1Y1', '418-555-2468', 'quebec@redrockhotels.com'),
+('Red Rock Hotels', 'Red Rock Resort Edmonton', 4.5, 369, 'Jasper Avenue', 'Edmonton', 'AB', 'T5J3N8', '780-555-3690', 'edmonton@redrockhotels.com'),
+('Red Rock Hotels', 'Red Rock Resort Montreal', 4.8, 1010, 'Rue de la Gauchetière Ouest', 'Montreal', 'QC', 'H3B2N2', '514-555-1010', 'montreal@redrockhotels.com'),
+('Red Rock Hotels', 'Red Rock Resort St. Johns', 3.6, 246, 'Water Street', 'St. Johns', 'NL', 'A1C1A9', '709-555-2460', 'stjohns@redrockhotels.com');
+
+
+INSERT INTO Hotel (chain_name, hotel_name, rating, street_number, street_name, city, province, postal, phone_numbers, email_addresses)
+VALUES
+('Golden Sands Resorts', 'Sunset Paradise', 4.2, 4567, 'Sunset Boulevard', 'Vancouver', 'BC', 'V6B4N9', '604-123-4567', 'sunsetparadise@goldensands.com'),
+('Golden Sands Resorts', 'Golden Oasis', 3.8, 9876, 'Gold Coast Highway', 'Toronto', 'ON', 'M4B1R7', '416-987-6543', 'goldenoasis@goldensands.com'),
+('Golden Sands Resorts', 'Sands of Time', 4.5, 1234, 'Beach Avenue', 'Halifax', 'NS', 'B3J1N5', '902-456-7890', 'sandsoftime@goldensands.com'),
+('Golden Sands Resorts', 'Island Retreat', 3.3, 5678, 'Island Road', 'Victoria', 'BC', 'V8W1Y5', '250-234-5678', 'islandretreat@goldensands.com'),
+('Golden Sands Resorts', 'Paradise Cove', 4.0, 8765, 'Cove Road', 'Kelowna', 'BC', 'V1Y8R1', '778-345-6789', 'paradisecove@goldensands.com'),
+('Golden Sands Resorts', 'Sunny Sands', 4.1, 3456, 'Sunny Boulevard', 'Montreal', 'QC', 'H1A1B1', '514-456-7890', 'sunnysands@goldensands.com'),
+('Golden Sands Resorts', 'Crystal Beach', 3.5, 6543, 'Crystal Drive', 'Calgary', 'AB', 'T2E1S5', '403-567-8901', 'crystalbeach@goldensands.com'),
+('Golden Sands Resorts', 'Ocean View', 4.8, 2345, 'Ocean Avenue', 'Ottawa', 'ON', 'K1N7E9', '613-678-9012', 'oceanview@goldensands.com');
+
+INSERT INTO Hotel (chain_name, hotel_name, rating, street_number, street_name, city, province, postal, phone_numbers, email_addresses)
+VALUES
+('Silver Peak Hotels', 'Silver Peak Inn', 3.9, 1234, 'Main Street', 'Montreal', 'QC', 'H3B2T6', '514-555-1234', 'info@silverpeakinn.com'),
+('Silver Peak Hotels', 'The Silver Lodge', 4.5, 5678, 'Queen Street', 'Ottawa', 'ON', 'K1P5G9', '613-555-1234', 'info@silverlodge.com'),
+('Silver Peak Hotels', 'Alpine Heights Resort', 4.3, 9012, 'Mountain Road', 'Calgary', 'AB', 'T2G4M9', '403-555-1234', 'info@alpineheights.com'),
+('Silver Peak Hotels', 'Silver View Suites', 3.5, 3456, 'Ocean Avenue', 'Vancouver', 'BC', 'V6B3N8', '604-555-1234', 'info@silverviewsuites.com'),
+('Silver Peak Hotels', 'Silver Palm Resort', 4.2, 7890, 'Palm Street', 'Toronto', 'ON', 'M4C1M5', '416-555-1234', 'info@silverpalmresort.com'),
+('Silver Peak Hotels', 'Mountain View Lodge', 4.1, 2345, 'Mountain Road', 'Halifax', 'NS', 'B3K2Z4', '902-555-1234', 'info@mountainviewlodge.com'),
+('Silver Peak Hotels', 'Silver Valley Inn', 3.8, 6789, 'Valley Street', 'Winnipeg', 'MB', 'R3B2E9', '204-555-1234', 'info@silvervalleyinn.com'),
+('Silver Peak Hotels', 'The Silver Star Hotel', 4.7, 1111, 'Star Boulevard', 'Victoria', 'BC', 'V8W1N4', '250-555-1234', 'info@silverstarhotel.com');
