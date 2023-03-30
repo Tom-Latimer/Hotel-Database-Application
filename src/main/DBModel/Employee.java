@@ -29,7 +29,7 @@ public class Employee {
     @Column(name = "city")
     private String city;
 
-    @Column(name = "province", length = 3)
+    @Column(name = "province", length = 2)
     private String province;
 
     @Column(name = "postal", length = 6)
