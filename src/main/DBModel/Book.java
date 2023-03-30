@@ -3,10 +3,15 @@ package main.DBModel;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "amenity")
-public class Amenity {
+@Table(name = "books")
+public class Book {
     @EmbeddedId
-    private AmenityId id;
+    private BookId id;
+
+    @MapsId("bookingId")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "booking_id", nullable = false)
+    private Booking booking;
 
     @MapsId
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -17,12 +22,20 @@ public class Amenity {
     })
     private Room room;
 
-    public AmenityId getId() {
+    public BookId getId() {
         return id;
     }
 
-    public void setId(AmenityId id) {
+    public void setId(BookId id) {
         this.id = id;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 
     public Room getRoom() {

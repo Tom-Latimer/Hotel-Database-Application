@@ -1,33 +1,58 @@
-package DBModel;
+package main.DBModel;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "renting")
 public class Renting {
-
     @Id
-    @Column(name = "renting_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int renting_id;
+    @Column(name = "rent_id", nullable = false)
+    private Integer id;
 
     @Column(name = "start_date")
-    private Date start_date;
+    private LocalDate startDate;
 
-    @Column(name="end_date")
-    private Date end_date;
+    @Column(name = "end_date")
+    private LocalDate endDate;
 
     @Column(name = "cost", precision = 7, scale = 2)
-    private BigDecimal ssn;
+    private BigDecimal cost;
 
-    @OneToOne(mappedBy = "renting", fetch = FetchType.LAZY)
-    private Creates employeeThatCreated;
+    public Integer getId() {
+        return id;
+    }
 
-    @OneToOne(mappedBy = "renting", fetch = FetchType.LAZY)
-    private Pays customerThatPayed;
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-    @OneToOne(mappedBy = "renting", fetch = FetchType.LAZY)
-    private Rents rentingFor;
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public BigDecimal getCost() {
+        return cost;
+    }
+
+    public void setCost(BigDecimal cost) {
+        this.cost = cost;
+    }
+
 }

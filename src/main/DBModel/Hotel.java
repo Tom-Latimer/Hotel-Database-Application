@@ -1,15 +1,18 @@
-package DBModel;
+package main.DBModel;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Table(name = "hotel")
 public class Hotel {
-
     @EmbeddedId
-    private HotelId hotel_id;
+    private HotelId id;
+
+    @MapsId("chainName")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "chain_name", nullable = false)
+    private HotelChain chainName;
 
     @Column(name = "hotel_name", length = 20)
     private String hotelName;
@@ -20,9 +23,11 @@ public class Hotel {
     @Column(name = "street_number", precision = 4)
     private BigDecimal streetNumber;
 
+    @Lob
     @Column(name = "street_name")
     private String streetName;
 
+    @Lob
     @Column(name = "city")
     private String city;
 
@@ -32,48 +37,28 @@ public class Hotel {
     @Column(name = "postal", length = 6)
     private String postal;
 
+    @Lob
     @Column(name = "phone_numbers")
     private String phoneNumbers;
 
+    @Lob
     @Column(name = "email_addresses")
     private String emailAddresses;
 
-    @MapsId("hotel_id")
-    @JoinColumn(name = "chain_name", referencedColumnName = "chain_name")
-    @ManyToOne
-    private Hotel_Chain hotel_chain;
-
-    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY)
-    private List<Works> employeeList;
-
-    @OneToOne(mappedBy = "hotel", fetch = FetchType.LAZY)
-    private Manages manager;
-
-    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY)
-    private List<Room> roomList;
-
-
-    // constructor, getters, setters, etc.
-
-    public Hotel(HotelId hotel_id, String hotelName, BigDecimal rating, BigDecimal streetNumber, String streetName, String city, String province, String postal, String phoneNumbers, String emailAddresses) {
-        this.hotel_id = hotel_id;
-        this.hotelName = hotelName;
-        this.rating = rating;
-        this.streetNumber = streetNumber;
-        this.streetName = streetName;
-        this.city = city;
-        this.province = province;
-        this.postal = postal;
-        this.phoneNumbers = phoneNumbers;
-        this.emailAddresses = emailAddresses;
+    public HotelId getId() {
+        return id;
     }
 
-    public HotelId getHotel_id() {
-        return hotel_id;
+    public void setId(HotelId id) {
+        this.id = id;
     }
 
-    public void setHotel_id(HotelId hotel_id) {
-        this.hotel_id = hotel_id;
+    public HotelChain getChainName() {
+        return chainName;
+    }
+
+    public void setChainName(HotelChain chainName) {
+        this.chainName = chainName;
     }
 
     public String getHotelName() {
@@ -148,12 +133,4 @@ public class Hotel {
         this.emailAddresses = emailAddresses;
     }
 
-
-    public Hotel_Chain getHotel_chain() {
-        return hotel_chain;
-    }
-
-    public void setHotel_chain(Hotel_Chain hotel_chain) {
-        this.hotel_chain = hotel_chain;
-    }
 }

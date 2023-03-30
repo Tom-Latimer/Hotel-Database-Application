@@ -135,6 +135,7 @@ CREATE TABLE Creates (
 CREATE TABLE Pays (
 	ssn NUMERIC(9,0),
 	rent_id Int NOT NULL,
+	PRIMARY KEY (ssn,rent_id),
 	FOREIGN KEY (ssn) REFERENCES Customer (ssn),
 	FOREIGN KEY (rent_id) REFERENCES Renting (rent_id)
 );

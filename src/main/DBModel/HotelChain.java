@@ -1,23 +1,23 @@
-package DBModel;
+package main.DBModel;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Table(name = "hotel_chain")
-public class Hotel_Chain {
-
+public class HotelChain {
     @Id
     @Column(name = "chain_name", nullable = false, length = 20)
-    private String chainName;
+    private String id;
 
-    @Column(name = "street_number", precision = 4, scale = 0)
+    @Column(name = "street_number", precision = 4)
     private BigDecimal streetNumber;
 
+    @Lob
     @Column(name = "street_name")
     private String streetName;
 
+    @Lob
     @Column(name = "city")
     private String city;
 
@@ -27,38 +27,20 @@ public class Hotel_Chain {
     @Column(name = "postal", length = 6)
     private String postal;
 
+    @Lob
     @Column(name = "phone_numbers")
     private String phoneNumbers;
 
+    @Lob
     @Column(name = "email_addresses")
     private String emailAddresses;
 
-    @OneToMany(mappedBy = "hotel_chain",fetch = FetchType.LAZY)
-    private List<Hotel> hotelList;
-
-    // Constructor, getters, and setters
-
-    public void Hotel_Chain(String chainName, BigDecimal streetNumber, String streetName, String city, String province, String postal, String phoneNumbers, String emailAddresses) {
-        this.chainName = chainName;
-        this.streetNumber = streetNumber;
-        this.streetName = streetName;
-        this.city = city;
-        this.province = province;
-        this.postal = postal;
-        this.phoneNumbers = phoneNumbers;
-        this.emailAddresses = emailAddresses;
+    public String getId() {
+        return id;
     }
 
-    public Hotel_Chain(String chainName) {
-        this.chainName = chainName;
-    }
-
-    public String getChainName() {
-        return chainName;
-    }
-
-    public void setChainName(String chainName) {
-        this.chainName = chainName;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public BigDecimal getStreetNumber() {
@@ -117,11 +99,4 @@ public class Hotel_Chain {
         this.emailAddresses = emailAddresses;
     }
 
-    public List<Hotel> getHotelList() {
-        return hotelList;
-    }
-
-    public void setHotelList(List<Hotel> hotelList) {
-        this.hotelList = hotelList;
-    }
 }
