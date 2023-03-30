@@ -29,7 +29,7 @@
             </a>
         </div>
         <div class = "centerelements" id = "content">
-            <form>
+            <form action="queryServlet" method="POST">
                 <input type = "text" id = "locationcity" name = "locationcity" placeholder = "Enter your destination city"><br>
                 <input type = "number" id = "capacityguests" name = "capacityguests" placeholder = "Number of guests"><br>
                 <label for = "checkindate">Check in date:</label>

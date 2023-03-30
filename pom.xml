@@ -36,8 +36,16 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>5.1.12.Final</version>
+      <version>5.3.20.Final</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/net.n2oapp.criteria/criteria-api -->
+    <dependency>
+      <groupId>net.n2oapp.criteria</groupId>
+      <artifactId>criteria-api</artifactId>
+      <version>7.23.66</version>
+    </dependency>
+
 
     <dependency>
       <groupId>org.junit.jupiter</groupId>
