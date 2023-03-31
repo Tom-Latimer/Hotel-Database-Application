@@ -122,6 +122,17 @@ select:focus {
     vertical-align: middle;
 }
 
+.choicebutton {
+    background-color: #F6BF51;
+    color: #2E2A24;
+    border: 2px solid #F6BF51;
+}
+
+.choicebutton:hover {
+    background-color: #F2F2F2;
+    color: #2E2A24;
+}
+
 .backbutton {
     background-color: #2E2A24;
     color: #F2F2F2;
