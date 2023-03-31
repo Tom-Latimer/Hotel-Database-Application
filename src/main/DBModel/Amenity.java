@@ -1,7 +1,12 @@
-package main.DBModel;
+package DBModel;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "amenity")
 public class Amenity {
@@ -13,24 +18,15 @@ public class Amenity {
     @JoinColumns({
             @JoinColumn(name = "chain_name", referencedColumnName = "chain_name", nullable = false),
             @JoinColumn(name = "hotel_id", referencedColumnName = "hotel_id", nullable = false),
-            @JoinColumn(name = "room_id", referencedColumnName = "room_id", nullable = false)
+            //@JoinColumn(name = "room_id", referencedColumnName = "room_id", nullable = false)
     })
+    @PrimaryKeyJoinColumn(name = "room_id", referencedColumnName = "room_id")
     private Room room;
 
-    public AmenityId getId() {
-        return id;
-    }
+    @Column(name = "room_chain_name", nullable = false)
+    private String roomChainName;
 
-    public void setId(AmenityId id) {
-        this.id = id;
-    }
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
+    @Column(name = "room_hotel_id", nullable = false)
+    private Integer roomHotelId;
 
 }
