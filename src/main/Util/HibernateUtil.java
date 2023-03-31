@@ -2,19 +2,27 @@ package Util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+
+import javax.persistence.EntityManagerFactory;
 
 public class HibernateUtil {
     private static SessionFactory sessionFactory;
 
     private static SessionFactory buildSessionFactory() {
         try {
+
+
+            /*
             // Create the SessionFactory from hibernate.cfg.xml
 
             Configuration configuration = new Configuration();
             configuration.configure("hibernate.cfg.xml");
+            /*
             configuration.addAnnotatedClass(DBModel.Amenity.class);
             configuration.addAnnotatedClass(DBModel.AmenityId.class);
             configuration.addAnnotatedClass(DBModel.Book.class);
@@ -51,6 +59,13 @@ public class HibernateUtil {
             System.out.println("Hibernate serviceRegistry created");
 
             SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+            */
+            StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+                    .configure() // configures settings from hibernate.cfg.xml
+                    .build();
+                sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
+
+
 
             return sessionFactory;
         }
@@ -66,8 +81,5 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
-    public static Session getHibernateSession() {
-        return sessionFactory.openSession();
-    }
 
 }

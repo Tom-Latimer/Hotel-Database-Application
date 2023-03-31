@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import javax.persistence.EntityManager;
 import javax.persistence.criteria.*;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -60,6 +61,8 @@ public class QueryFormServlet extends HttpServlet {
 
             List<Room> results = sendQuery(locationcity,capacity,inDate,outDate);
 
+            System.out.println("Here is the results:" + results);
+
             if (results!= null) {
                 for (Room room: results) {
                     System.out.println();
@@ -75,9 +78,9 @@ public class QueryFormServlet extends HttpServlet {
 
     private List sendQuery(String location, int capacity, LocalDate inDate, LocalDate outDate) {
         List<Room> results = null;
-        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+        EntityManager session = HibernateUtil.getSessionFactory().createEntityManager();
 
-            session.beginTransaction();
+            session.getTransaction().begin();
 
             CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 
@@ -110,9 +113,7 @@ public class QueryFormServlet extends HttpServlet {
             session.getTransaction().commit();
 
 
-        } catch (Exception e) {
-            e.printStackTrace();;
-        }
+
         return results;
     }
 }

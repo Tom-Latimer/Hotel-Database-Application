@@ -1,13 +1,19 @@
 package DBModel;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.Hibernate;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Getter
+@Setter
 @Embeddable
 public class BookId implements Serializable {
-    private static final long serialVersionUID = 2905922567713548901L;
+    private static final long serialVersionUID = 656672791251423841L;
     @Column(name = "booking_id", nullable = false)
     private Integer bookingId;
 
@@ -20,42 +26,10 @@ public class BookId implements Serializable {
     @Column(name = "room_id", nullable = false)
     private Integer roomId;
 
-    public Integer getBookingId() {
-        return bookingId;
-    }
-
-    public void setBookingId(Integer bookingId) {
-        this.bookingId = bookingId;
-    }
-
-    public String getChainName() {
-        return chainName;
-    }
-
-    public void setChainName(String chainName) {
-        this.chainName = chainName;
-    }
-
-    public Integer getHotelId() {
-        return hotelId;
-    }
-
-    public void setHotelId(Integer hotelId) {
-        this.hotelId = hotelId;
-    }
-
-    public Integer getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(Integer roomId) {
-        this.roomId = roomId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         BookId entity = (BookId) o;
         return Objects.equals(this.chainName, entity.chainName) &&
                 Objects.equals(this.hotelId, entity.hotelId) &&
