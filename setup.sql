@@ -234,6 +234,11 @@ from (select room_id, city
 	  and room.available =true) as temp
 group by area;
 
+create view room_view as
+select city, hotel_name, room.*
+from hotel,room
+where room.hotel_id = hotel.hotel_id;
+
 /* Data Insertion */
 
 INSERT INTO hotel_chain (chain_name, street_number, street_name, city, province, postal, phone_numbers, email_addresses)

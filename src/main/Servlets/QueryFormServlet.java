@@ -1,7 +1,9 @@
 package Servlets;
 
 import DBModel.Hotel;
+import DBModel.Hotel_;
 import DBModel.Room;
+import DBModel.Room_;
 import Util.HibernateUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -63,15 +65,11 @@ public class QueryFormServlet extends HttpServlet {
 
             System.out.println("Here is the results:" + results);
 
-            if (results!= null) {
-                for (Room room: results) {
-                    System.out.println();
-                }
-            }
-
+            request.getRequestDispatcher("/customerhome.jsp").forward(request,response);
 
         } catch (Exception e) {
             e.printStackTrace();
+            request.getRequestDispatcher("/index.jsp").forward(request,response);
         }
 
     }
@@ -90,14 +88,14 @@ public class QueryFormServlet extends HttpServlet {
 
             Join<Room, Hotel> hotelRooms = root.join("hotel");
 
-            Predicate[] predicates = new Predicate[1];
+            Predicate[] predicates = new Predicate[4];
 
             if (location != null) {
-                predicates[0] = criteriaBuilder.equal(hotelRooms.get("city"), location);
+                predicates[0] = criteriaBuilder.equal(hotelRooms.get(Hotel_.CITY), location);
             }
 
             if (capacity != 0) {
-                //predicates[1] = criteriaBuilder.equal(hotelRooms.get("capacity"), capacity);
+                //predicates[1] = criteriaBuilder.equal(hotelRooms.get(Room_.CAPACITY), capacity);
             }
 
             if (inDate != null) {
