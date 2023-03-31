@@ -16,7 +16,10 @@ import org.hibernate.SessionFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.*;
+import javax.persistence.metamodel.EntityType;
+import javax.persistence.metamodel.Metamodel;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -78,37 +81,37 @@ public class QueryFormServlet extends HttpServlet {
         List<Room> results = null;
         EntityManager session = HibernateUtil.getSessionFactory().createEntityManager();
 
-            session.getTransaction().begin();
+        session.getTransaction().begin();
 
-            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 
-            CriteriaQuery<Room> searchQuery = criteriaBuilder.createQuery(Room.class);
+        CriteriaQuery<Room> searchQuery = criteriaBuilder.createQuery(Room.class);
 
-            Root<Room> root = searchQuery.from(Room.class);
+        Root<Room> root = searchQuery.from(Room.class);
 
-            Join<Room, Hotel> hotelRooms = root.join("hotel");
+        Join<Room, Hotel> hotelRooms = root.join(Room_.hotel);
 
-            Predicate[] predicates = new Predicate[4];
+        Predicate[] predicates = new Predicate[4];
 
-            if (location != null) {
-                predicates[0] = criteriaBuilder.equal(hotelRooms.get(Hotel_.CITY), location);
-            }
+        if (location != null) {
+            predicates[0] = criteriaBuilder.equal(hotelRooms.get(Hotel_.CITY), location);
+        }
 
-            if (capacity != 0) {
-                //predicates[1] = criteriaBuilder.equal(hotelRooms.get(Room_.CAPACITY), capacity);
-            }
+        if (capacity != 0) {
+            predicates[1] = criteriaBuilder.equal(root.get(Room_.CAPACITY), capacity);
+        }
 
-            if (inDate != null) {
-                //predicates[2] = criteriaBuilder.equal(hotelRooms.get())
-            }
+        if (inDate != null) {
+            //predicates[2] = criteriaBuilder.equal(hotelRooms.get())
+        }
 
-            if (outDate != null) {
+        if (outDate != null) {
 
-            }
+        }
 
-            results = session.createQuery(searchQuery).getResultList();
+        results = session.createQuery(searchQuery).getResultList();
 
-            session.getTransaction().commit();
+        session.getTransaction().commit();
 
 
 
