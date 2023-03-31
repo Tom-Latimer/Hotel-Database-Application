@@ -1,13 +1,14 @@
-package main.Servlets;
+package Servlets;
 
-import main.DBModel.Hotel;
-import main.DBModel.Room;
+import DBModel.Hotel;
+import DBModel.Room;
+import Util.HibernateUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import main.HibernateUtil;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
