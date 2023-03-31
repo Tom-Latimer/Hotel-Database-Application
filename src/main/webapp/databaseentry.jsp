@@ -40,7 +40,7 @@
                             <option value = "Booking">Booking</option>
                             <option value = "Works">Works</option>
                             <option value = "Manages">Manages</option>
-                            <option value = "Create">Create</option>
+                            <option value = "Creates">Creates</option>
                             <option value = "Pays">Pays</option>
                             <option value = "Rents">Rents</option>
                             <option value = "Books">Books</option>
@@ -95,6 +95,7 @@
                     </div>
 
                     <div id = "Hotel" hidden = "true">
+
                         <form>
                             <label for = "Hotel-chain_name">Chain name:</label>
                             <input type = "text" id = "Hotel-chain_name" name = "chain_name" placeholder = "Chain Name" minlength = "1" maxlength = "20" required><br>
@@ -116,7 +117,6 @@
 
                             <label for = "Hotel-province">Province:</label>
                             <select id = "Hotel-province" name = "province">
-                                <option value = "defaultprovince">Choose a province</option>
                                 <option value = "AB">AB</option>
                                 <option value = "BC">BC</option>
                                 <option value = "MB">MB</option>
@@ -146,63 +146,301 @@
                     </div>
 
                     <div id = "Room" hidden = "true">
+                        <form>
+                            <label for = "Room-chain_name">Chain name:</label>
+                            <input type = "text" id = "Room-chain_name" name = "chain_name" placeholder = "Chain Name" minlength = "1" maxlength = "20" required><br>
 
+                            <label for = "Room-hotel_id">Hotel ID:</label>
+                            <input type = "number" id = "Room-hotel_id" name = "hotel_id" placeholder = "Hotel ID" min = "0" required><br>
+
+                            <label for = "Room-price">Price:</label>
+                            <input type = "number" id = "Room-hotel_id" name = "hotel_id" placeholder = "Price" min = "0" max = "99999" step = "0.01" required><br>
+
+                            <label for = "Room-capacity">Capacity:</label>
+                            <input type = "number" id = "Room-hotel_id" name = "hotel_id" placeholder = "Capacity" min = "1" required><br>
+
+                            <label for = "Room-view_type">View type:</label>
+                            <select id = "Room-view_type" name = "view_type">
+                                <option value = "true">Sea View</option>
+                                <option value = "false">Mountain View</option>
+                            </select>
+
+                            <label for = "Room-availability">Room Availability:</label>
+                            <select id = "Room-availability" name = "availability">
+                                <option value = "true">Available</option>
+                                <option value = "false">Not Available</option>
+                            </select>
+
+                            <input type = "submit" value = "Submit">
+                        </form>
                     </div>
 
                     <div id = "Amenity" hidden = "true">
+                        <form>
+                            <label for = "Amenity-chain_name">Chain name:</label>
+                            <input type = "text" id = "Amenity-chain_name" name = "chain_name" placeholder = "Chain Name" minlength = "1" maxlength = "20" required><br>
 
+                            <label for = "Amenity-hotel_id">Hotel ID:</label>
+                            <input type = "number" id = "Amenity-hotel_id" name = "hotel_id" placeholder = "Hotel ID" min = "0" required><br>
+
+                            <label for = "Amenity-room_id">Room ID:</label>
+                            <input type = "number" id = "Amenity-room_id" name = "room_id" placeholder = "Room ID" min = "0" required><br>
+
+                            <label for = "Amenity-amen_type">Amenity:</label>
+                            <input type = "text" id = "Amenity-amen_type" name = "amen_type" placeholder = "Amenity" minlength = "1" maxlength = "20" required><br>
+
+                            <input type = "submit" value = "Submit">
+                        </form>
                     </div>
 
                     <div id = "Problem" hidden = "true">
+                        <form>
+                            <label for = "Problem-chain_name">Chain name:</label>
+                            <input type = "text" id = "Problem-chain_name" name = "chain_name" placeholder = "Chain Name" minlength = "1" maxlength = "20" required><br>
 
+                            <label for = "Problem-hotel_id">Hotel ID:</label>
+                            <input type = "number" id = "Problem-hotel_id" name = "hotel_id" placeholder = "Hotel ID" min = "0" required><br>
+
+                            <label for = "Problem-room_id">Room ID:</label>
+                            <input type = "number" id = "Problem-room_id" name = "room_id" placeholder = "Room ID" min = "0" required><br>
+
+                            <label for = "Problem-prob_type">Problem:</label>
+                            <input type = "text" id = "Problem-prob_type" name = "amen_type" placeholder = "Problem" minlength = "1" maxlength = "20" required><br>
+
+                            <input type = "submit" value = "Submit">
+                        </form>
                     </div>
 
                     <div id = "Employee" hidden = "true">
+                        <form>
+                            <label for = "Employee-ssn">SSN:</label>
+                            <input type = "number" id = "Employee-ssn" name = "ssn" placeholder = "SSN" min = "0" max = "999999999"required><br>
 
+                            <label for = "Employee-first_name">First name:</label>
+                            <input type = "text" id = "Employee-first_name" name = "first_name" placeholder = "First name" minlength = "1" required><br>
+
+                            <label for = "Employee-last_name">Last name:</label>
+                            <input type = "text" id = "Employee-last_name" name = "last_name" placeholder = "Last name" minlength = "1" required><br>
+
+                            <label for = "Employee-street_number">Street Number:</label>
+                            <input type = "number" id = "Employee-street_number" name = "street_number" placeholder = "Street Number" min = "1" max = "9999" required><br>
+
+                            <label for = "Employee-street_name">Street Name:</label>
+                            <input type = "text" id = "Employee-street_name" name = "street_name" placeholder = "Street Name" minlength = "1" required><br>
+
+                            <label for = "Employee-city">City:</label>
+                            <input type = "text" id = "Employee-city" name = "city" placeholder = "City" minlength = "1" required><br>
+
+                            <label for = "Employee-province">Province:</label>
+                            <select id = "Employee-province" name = "province">
+                                <option value = "AB">AB</option>
+                                <option value = "BC">BC</option>
+                                <option value = "MB">MB</option>
+                                <option value = "NB">NB</option>
+                                <option value = "NL">NL</option>
+                                <option value = "NS">NS</option>
+                                <option value = "NT">NT</option>
+                                <option value = "NU">NU</option>
+                                <option value = "ON	">ON</option>
+                                <option value = "PE">PE</option>
+                                <option value = "QC">QC</option>
+                                <option value = "SK">SK</option>
+                                <option value = "YT">YT</option>
+                            </select>
+
+                            <label for = "Employee-role">Employee role:</label>
+                            <input type = "text" id = "Employee-role" name = "role" placeholder = "Employee role" minlength = "1" required><br>
+
+                            <input type = "submit" value = "Submit">
+                        </form>
                     </div>
 
                     <div id = "Customer" hidden = "true">
+                        <form>
+                            <label for = "Customer-ssn">SSN:</label>
+                            <input type = "number" id = "Customer-ssn" name = "ssn" placeholder = "SSN" min = "0" max = "999999999"required><br>
 
+                            <label for = "Customer-first_name">First name:</label>
+                            <input type = "text" id = "Customer-first_name" name = "first_name" placeholder = "First name" minlength = "1" required><br>
+
+                            <label for = "Customer-last_name">Last name:</label>
+                            <input type = "text" id = "Customer-last_name" name = "last_name" placeholder = "Last name" minlength = "1" required><br>
+
+                            <label for = "Customer-street_number">Street Number:</label>
+                            <input type = "number" id = "Customer-street_number" name = "street_number" placeholder = "Street Number" min = "1" max = "9999" required><br>
+
+                            <label for = "Customer-street_name">Street Name:</label>
+                            <input type = "text" id = "Customer-street_name" name = "street_name" placeholder = "Street Name" minlength = "1" required><br>
+
+                            <label for = "Customer-city">City:</label>
+                            <input type = "text" id = "Customer-city" name = "city" placeholder = "City" minlength = "1" required><br>
+
+                            <label for = "Customer-province">Province:</label>
+                            <select id = "Customer-province" name = "province">
+                                <option value = "AB">AB</option>
+                                <option value = "BC">BC</option>
+                                <option value = "MB">MB</option>
+                                <option value = "NB">NB</option>
+                                <option value = "NL">NL</option>
+                                <option value = "NS">NS</option>
+                                <option value = "NT">NT</option>
+                                <option value = "NU">NU</option>
+                                <option value = "ON	">ON</option>
+                                <option value = "PE">PE</option>
+                                <option value = "QC">QC</option>
+                                <option value = "SK">SK</option>
+                                <option value = "YT">YT</option>
+                            </select>
+
+                            <label for = "Customer-date_of_registration">Date of Registration:</label>
+                            <input type = "date" id = "Customer-date_of_registration" name = "date_of_registration" placeholder = "Date of Registration" minlength = "1" required><br>
+
+                            <input type = "submit" value = "Submit">
+                        </form>
                     </div>
 
                     <div id = "Renting" hidden = "true">
+                        <form>
+                            <label for = "Renting-start_date">Date of Registration:</label>
+                            <input type = "date" id = "Renting-start_date" name = "start_date" placeholder = "Start Date" minlength = "1" required><br>
 
+                            <label for = "Renting-end_date">Date of Registration:</label>
+                            <input type = "date" id = "Renting-end_date" name = "end_date" placeholder = "End Date" minlength = "1" required><br>
+
+                            <label for = "Renting-cost">Cost:</label>
+                            <input type = "number" id = "Renting-cost" name = "cost" placeholder = "Cost" min = "0" max = "99999" step = "0.01" required><br>
+
+                            <input type = "submit" value = "Submit">
+                        </form>
                     </div>
 
                     <div id = "Booking" hidden = "true">
+                        <form>
+                            <label for = "Booking-start_date">Date of Registration:</label>
+                            <input type = "date" id = "Booking-start_date" name = "start_date" placeholder = "Start Date" minlength = "1" required><br>
 
+                            <label for = "Booking-end_date">Date of Registration:</label>
+                            <input type = "date" id = "Booking-end_date" name = "end_date" placeholder = "End Date" minlength = "1" required><br>
+
+                            <label for = "Booking-cost">Cost:</label>
+                            <input type = "number" id = "Booking-cost" name = "cost" placeholder = "Cost" min = "0" max = "99999" step = "0.01" required><br>
+
+                            <input type = "submit" value = "Submit">
+                        </form>
                     </div>
 
                     <div id = "Works" hidden = "true">
+                        <form>
+                            <label for = "Works-ssn">SSN:</label>
+                            <input type = "number" id = "Works-ssn" name = "ssn" placeholder = "SSN" min = "0" max = "999999999"required><br>
 
+                            <label for = "Works-hotel_id">Hotel ID:</label>
+                            <input type = "number" id = "Works-hotel_id" name = "hotel_id" placeholder = "Hotel ID" min = "0" required><br>
+
+                            <label for = "Works-chain_name">Chain name:</label>
+                            <input type = "text" id = "Works-chain_name" name = "chain_name" placeholder = "Chain Name" minlength = "1" maxlength = "20" required><br>
+
+                            <input type = "submit" value = "Submit">
+                        </form>
                     </div>
 
                     <div id = "Manages" hidden = "true">
+                        <form>
+                            <label for = "Manages-ssn">SSN:</label>
+                            <input type = "number" id = "Manages-ssn" name = "ssn" placeholder = "SSN" min = "0" max = "999999999"required><br>
 
+                            <label for = "Manages-hotel_id">Hotel ID:</label>
+                            <input type = "number" id = "Manages-hotel_id" name = "hotel_id" placeholder = "Hotel ID" min = "0" required><br>
+
+                            <label for = "Manages-chain_name">Chain name:</label>
+                            <input type = "text" id = "Manages-chain_name" name = "chain_name" placeholder = "Chain Name" minlength = "1" maxlength = "20" required><br>
+
+                            <input type = "submit" value = "Submit">
+                        </form>
                     </div>
 
-                    <div id = "Create" hidden = "true">
+                    <div id = "Creates" hidden = "true">
+                        <form>
+                            <label for = "Creates-ssn">SSN:</label>
+                            <input type = "number" id = "Creates-ssn" name = "ssn" placeholder = "SSN" min = "0" max = "999999999"required><br>
 
+                            <label for = "Creates-rent_id">Hotel ID:</label>
+                            <input type = "number" id = "Creates-rent_id" name = "rent_id" placeholder = "Rent ID" min = "0" required><br>
+
+                            <input type = "submit" value = "Submit">
+                        </form>
                     </div>
 
                     <div id = "Pays" hidden = "true">
+                        <form>
+                            <label for = "Pays-ssn">SSN:</label>
+                            <input type = "number" id = "Pays-ssn" name = "ssn" placeholder = "SSN" min = "0" max = "999999999"required><br>
 
+                            <label for = "Pays-rent_id">Hotel ID:</label>
+                            <input type = "number" id = "Pays-rent_id" name = "rent_id" placeholder = "Rent ID" min = "0" required><br>
+
+                            <input type = "submit" value = "Submit">
+                        </form>
                     </div>
 
                     <div id = "Rents" hidden = "true">
+                        <form>
+                            <label for = "Rents-rent_id">Hotel ID:</label>
+                            <input type = "number" id = "Rents-rent_id" name = "rent_id" placeholder = "Rent ID" min = "0" required><br>
 
+                            <label for = "Rents-chain_name">Chain name:</label>
+                            <input type = "text" id = "Rents-chain_name" name = "chain_name" placeholder = "Chain Name" minlength = "1" maxlength = "20" required><br>
+
+                            <label for = "Rents-hotel_id">Hotel ID:</label>
+                            <input type = "number" id = "Rents-hotel_id" name = "hotel_id" placeholder = "Hotel ID" min = "0" required><br>
+
+                            <label for = "Rents-room_id">Room ID:</label>
+                            <input type = "number" id = "Rents-room_id" name = "room_id" placeholder = "Room ID" min = "0" required><br>
+
+                            <input type = "submit" value = "Submit">
+                        </form>
                     </div>
 
                     <div id = "Books" hidden = "true">
+                        <form>
+                            <label for = "Books-booking_id">Booking ID:</label>
+                            <input type = "number" id = "Books-booking_id" name = "booking_id" placeholder = "Booking ID" min = "0" required><br>
 
+                            <label for = "Books-chain_name">Chain name:</label>
+                            <input type = "text" id = "Books-chain_name" name = "chain_name" placeholder = "Chain Name" minlength = "1" maxlength = "20" required><br>
+
+                            <label for = "Books-hotel_id">Hotel ID:</label>
+                            <input type = "number" id = "Books-hotel_id" name = "hotel_id" placeholder = "Hotel ID" min = "0" required><br>
+
+                            <label for = "Books-room_id">Room ID:</label>
+                            <input type = "number" id = "Books-room_id" name = "room_id" placeholder = "Room ID" min = "0" required><br>
+
+                            <input type = "submit" value = "Submit">
+                        </form>
                     </div>
 
                     <div id = "Reserves" hidden = "true">
+                        <form>
+                            <label for = "Reserves-ssn">SSN:</label>
+                            <input type = "number" id = "Reserves-ssn" name = "ssn" placeholder = "SSN" min = "0" max = "999999999"required><br>
 
+                            <label for = "Reserves-booking_id">Booking ID:</label>
+                            <input type = "number" id = "Reserves-booking_id" name = "booking_id" placeholder = "Booking ID" min = "0" required><br>
+
+                            <input type = "submit" value = "Submit">
+                        </form>
                     </div>
 
                     <div id = "Registers" hidden = "true">
+                        <form>
+                            <label for = "Registers-ssn">SSN:</label>
+                            <input type = "number" id = "Registers-ssn" name = "ssn" placeholder = "SSN" min = "0" max = "999999999"required><br>
 
+                            <label for = "Registers-booking_id">Booking ID:</label>
+                            <input type = "number" id = "Registers-booking_id" name = "booking_id" placeholder = "Booking ID" min = "0" required><br>
+
+                            <input type = "submit" value = "Submit">
+                        </form>
                     </div>
 
                 </div>
