@@ -1,10 +1,13 @@
-import DBModel.Hotel;
-import DBModel.Room;
+package main.Servlets;
+
+import main.DBModel.Hotel;
+import main.DBModel.Room;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import main.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -13,16 +16,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-@WebServlet(name = "QueryFormServlet", urlPatterns = "/queryServlet")
+@WebServlet (name = "QueryFormServlet", urlPatterns = "/queryServlet")
 public class QueryFormServlet extends HttpServlet {
-
-    private SessionFactory sessionFactory;
-
-    @Override
-    public void init() throws ServletException {
-        super.init();
-        sessionFactory = main.HibernateUtil.getSessionFactory();
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -61,11 +56,15 @@ public class QueryFormServlet extends HttpServlet {
                 outDate = LocalDate.parse(checkoutdate);
             }
 
+
             List<Room> results = sendQuery(locationcity,capacity,inDate,outDate);
 
-            for (Room room: results) {
-                System.out.println();
+            if (results!= null) {
+                for (Room room: results) {
+                    System.out.println();
+                }
             }
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,42 +73,45 @@ public class QueryFormServlet extends HttpServlet {
     }
 
     private List sendQuery(String location, int capacity, LocalDate inDate, LocalDate outDate) {
+        List<Room> results = null;
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 
-        Session session = sessionFactory.openSession();
+            session.beginTransaction();
 
-        session.beginTransaction();
+            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 
-        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+            CriteriaQuery<Room> searchQuery = criteriaBuilder.createQuery(Room.class);
 
-        CriteriaQuery<Room> searchQuery = criteriaBuilder.createQuery(Room.class);
+            Root<Room> root = searchQuery.from(Room.class);
 
-        Root<Room> root = searchQuery.from(Room.class);
+            Join<Room, Hotel> hotelRooms = root.join("hotel");
 
-        Join<Room, Hotel> hotelRooms = root.join("hotel");
+            Predicate[] predicates = new Predicate[1];
 
-        Predicate[] predicates = new Predicate[4];
+            if (location != null) {
+                predicates[0] = criteriaBuilder.equal(hotelRooms.get("city"), location);
+            }
 
-        if (location != null) {
-            predicates[0] = criteriaBuilder.equal(hotelRooms.get("city"),location);
+            if (capacity != 0) {
+                //predicates[1] = criteriaBuilder.equal(hotelRooms.get("capacity"), capacity);
+            }
+
+            if (inDate != null) {
+                //predicates[2] = criteriaBuilder.equal(hotelRooms.get())
+            }
+
+            if (outDate != null) {
+
+            }
+
+            results = session.createQuery(searchQuery).getResultList();
+
+            session.getTransaction().commit();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();;
         }
-
-        if (capacity != 0) {
-            predicates[1] = criteriaBuilder.equal(hotelRooms.get("capacity"),capacity);
-        }
-
-        if (inDate != null) {
-            //predicates[2] = criteriaBuilder.equal(hotelRooms.get())
-        }
-
-        if (outDate !=  null) {
-
-        }
-
-        List<Room> results = session.createQuery(searchQuery).getResultList();
-
-        session.getTransaction().commit();
-
         return results;
-
     }
 }

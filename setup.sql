@@ -1,5 +1,3 @@
-import java.util.Random;
-
 /* Table Creation */
 CREATE TABLE Hotel_Chain (
 	chain_name VARCHAR(20) NOT NULL,
