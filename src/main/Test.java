@@ -10,6 +10,7 @@ import org.hibernate.jdbc.Work;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -19,12 +20,20 @@ public class Test {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("HotelPU");
 
         HotelChain h = new HotelChain();
-        h.setId("Test7");
+        h.setId("Test13");
+
+        h.setStreetNumber(new BigDecimal(1111));
+        h.setStreetName("herbert");
+        h.setCity("city");
+        h.setProvince("mb");
+        h.setPostal("k1k1k1");
+        h.setPhoneNumbers("613");
+        h.setEmailAddresses("h");
         EntityManager session = emf.createEntityManager();
 
-            session.getTransaction().begin();
-            session.persist(h);
-            session.getTransaction().commit();
+        session.getTransaction().begin();
+        session.persist(h);
+        session.getTransaction().commit();
 
 
 

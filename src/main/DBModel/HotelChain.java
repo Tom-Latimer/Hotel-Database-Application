@@ -13,25 +13,25 @@ public class HotelChain {
     @Column(name = "street_number", precision = 4)
     private BigDecimal streetNumber;
 
-    @Lob
+
     @Column(name = "street_name")
     private String streetName;
 
-    @Lob
+
     @Column(name = "city")
     private String city;
 
-    @Column(name = "province", length = 2)
+    @Column(name = "province")
     private String province;
 
-    @Column(name = "postal", length = 6)
+    @Column(name = "postal")
     private String postal;
 
-    @Lob
+
     @Column(name = "phone_numbers")
     private String phoneNumbers;
 
-    @Lob
+
     @Column(name = "email_addresses")
     private String emailAddresses;
 

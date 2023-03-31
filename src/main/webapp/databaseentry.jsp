@@ -66,7 +66,7 @@
                     </form>
 
                     <div id = "Add-Hotel_Chain" hidden = "true">
-                        <form>
+                        <form action="addHC" method="POST">
                             <label for = "Add-Hotel_Chain-chain_name">Chain name:</label>
                             <input type = "text" id = "Add-Hotel_Chain-chain_name" name = "chain_name" placeholder = "Chain Name" minlength = "1" maxlength = "20" required><br>
 

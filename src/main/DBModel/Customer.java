@@ -11,22 +11,22 @@ public class Customer {
     @Column(name = "ssn", nullable = false, precision = 9)
     private BigDecimal id;
 
-    @Lob
+
     @Column(name = "first_name")
     private String firstName;
 
-    @Lob
+
     @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "street_number", precision = 4)
     private BigDecimal streetNumber;
 
-    @Lob
+
     @Column(name = "street_name")
     private String streetName;
 
-    @Lob
+
     @Column(name = "city")
     private String city;
 

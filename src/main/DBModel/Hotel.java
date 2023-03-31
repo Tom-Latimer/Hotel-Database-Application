@@ -23,11 +23,11 @@ public class Hotel {
     @Column(name = "street_number", precision = 4)
     private BigDecimal streetNumber;
 
-    @Lob
+
     @Column(name = "street_name")
     private String streetName;
 
-    @Lob
+
     @Column(name = "city")
     private String city;
 
@@ -37,11 +37,11 @@ public class Hotel {
     @Column(name = "postal", length = 6)
     private String postal;
 
-    @Lob
+
     @Column(name = "phone_numbers")
     private String phoneNumbers;
 
-    @Lob
+
     @Column(name = "email_addresses")
     private String emailAddresses;
 
