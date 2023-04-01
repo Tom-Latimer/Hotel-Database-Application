@@ -1,17 +1,17 @@
 package DBModel;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Embeddable
+
 public class HotelId implements Serializable {
     private static final long serialVersionUID = -2261425924785713295L;
-    @Column(name = "hotel_id", nullable = false)
+
+    //@Column(name = "hotel_id", nullable = false)
     private Integer hotelId;
 
-    @Column(name = "chain_name", nullable = false, length = 20)
+    //@Column(name = "chain_name", nullable = false, length = 20)
     private String chainName;
 
     public Integer getHotelId() {

@@ -1,6 +1,8 @@
 package Servlets;
 
+import DBModel.Hotel;
 import DBModel.HotelChain;
+import DBModel.HotelId;
 import Util.HibernateUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,18 +11,21 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 
-import javax.persistence.EntityManager;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
-@WebServlet(name = "addHotelChainServlet",urlPatterns = "/addHC")
-public class addHotelChainServlet extends HttpServlet {
+@WebServlet(name = "addHotelServlet", urlPatterns = "/addH")
+public class addHotelServlet extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         try {
+
+
             String chainName = request.getParameter("chain_name");
+            String hotelName = request.getParameter("name");
+            String rating = request.getParameter("rating");
             String streetNumberStr = request.getParameter("street_number");
             String streetName = request.getParameter("street_name");
             String city = request.getParameter("city");
@@ -30,6 +35,7 @@ public class addHotelChainServlet extends HttpServlet {
             String emailAddress = request.getParameter("email_addresses");
 
             BigDecimal streetNumber;
+            BigDecimal ratingBD = null;
 
             String[] provinceCodes = {"AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT"};
 
@@ -38,6 +44,22 @@ public class addHotelChainServlet extends HttpServlet {
                 chainName = chainName.toLowerCase();
             } else {
                 chainName = null;
+            }
+
+            if (hotelName != null && !hotelName.isEmpty()) {
+                hotelName = hotelName.toLowerCase();
+            } else {
+                hotelName = null;
+            }
+
+
+            try {
+                ratingBD = new BigDecimal(rating);
+                if (ratingBD.scale() != 1 || ratingBD.compareTo(BigDecimal.valueOf(1.0)) < 0 || ratingBD.compareTo(BigDecimal.valueOf(5.0)) > 0) {
+                    ratingBD = null;
+                }
+            } catch (NumberFormatException e) {
+                ratingBD = null;
             }
 
             if (streetNumberStr != null && !streetNumberStr.isEmpty()) {
@@ -103,7 +125,8 @@ public class addHotelChainServlet extends HttpServlet {
                 // Handle error case where chain name is empty or null
             }
 
-            addHotelChain(chainName, streetNumber, streetName, city, province, postalCode, phoneNumber, emailAddress);
+            addUpdateHotel(chainName, hotelName, ratingBD, streetNumber, streetName, city, province, postalCode, phoneNumber, emailAddress);
+
             request.getRequestDispatcher("/databaseentry.jsp").forward(request,response);
         } catch (Exception e) {
             e.printStackTrace();
@@ -111,25 +134,34 @@ public class addHotelChainServlet extends HttpServlet {
         }
     }
 
-    private void addHotelChain(String chainName, BigDecimal streetNumber, String streetName, String city, String province, String postal, String phoneNumbers, String emailAddresses) {
+    private void addUpdateHotel(String chainName, String name,BigDecimal rating, BigDecimal streetNumber, String streetName, String city, String province, String postal, String phoneNumbers, String emailAddresses) {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
-        HotelChain hotelChain = new HotelChain();
-        hotelChain.setId(chainName);
-        hotelChain.setStreetNumber(streetNumber);
-        hotelChain.setStreetName(streetName);
-        hotelChain.setCity(city);
-        hotelChain.setProvince(province);
-        hotelChain.setPostal(postal);
-        hotelChain.setPhoneNumbers(phoneNumbers);
-        hotelChain.setEmailAddresses(emailAddresses);
+        Hotel hotel = new Hotel();
+
+        HotelChain hc = new HotelChain();
+
+        hc.setId(chainName);
+
+
+
+        hotel.setHotelChain(hc);
+        hotel.setChainName(chainName);
+        hotel.setHotelName(name);
+        hotel.setRating(rating);
+        hotel.setStreetNumber(streetNumber);
+        hotel.setStreetName(streetName);
+        hotel.setCity(city);
+        hotel.setProvince(province);
+        hotel.setPostal(postal);
+        hotel.setPhoneNumbers(phoneNumbers);
+        hotel.setEmailAddresses(emailAddresses);
 
         session.beginTransaction();
 
-        session.saveOrUpdate(hotelChain);
+        session.saveOrUpdate(hotel);
         session.getTransaction().commit();
 
         session.close();
     }
-
 }

@@ -4,15 +4,26 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
+@IdClass(HotelId.class)
 @Table(name = "hotel")
 public class Hotel {
-    @EmbeddedId
-    private HotelId id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "room_seq")
+    @SequenceGenerator(name = "room_seq", sequenceName = "room_seq", initialValue = 1)
+    @Column(name = "hotel_id", nullable = false)
+    private Integer hotelId;
+
+
+
+    @Id
+    @Column(name = "chain_name", nullable = false, length = 20)
+    private String chainName;
 
     @MapsId("chainName")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "chain_name", nullable = false)
-    private HotelChain chainName;
+    private HotelChain hotelChain;
 
     @Column(name = "hotel_name", length = 20)
     private String hotelName;
@@ -45,21 +56,25 @@ public class Hotel {
     @Column(name = "email_addresses")
     private String emailAddresses;
 
-    public HotelId getId() {
-        return id;
+    public Hotel() {
     }
 
-    public void setId(HotelId id) {
-        this.id = id;
+    public void setChainName(String chainName) {
+        this.chainName = chainName;
+    }
+
+    public HotelChain getHotelChain() {
+        return hotelChain;
+    }
+
+    public void setHotelChain(HotelChain hotelChain) {
+        this.hotelChain = hotelChain;
     }
 
     public HotelChain getChainName() {
-        return chainName;
+        return hotelChain;
     }
 
-    public void setChainName(HotelChain chainName) {
-        this.chainName = chainName;
-    }
 
     public String getHotelName() {
         return hotelName;
@@ -133,4 +148,11 @@ public class Hotel {
         this.emailAddresses = emailAddresses;
     }
 
+    public Integer getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(Integer hotelId) {
+        this.hotelId = hotelId;
+    }
 }

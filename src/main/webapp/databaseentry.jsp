@@ -112,7 +112,7 @@
 
                     <div id = "Add-Hotel" hidden = "true">
 
-                        <form>
+                        <form action="addH" method="POST">
                             <label for = "Add-Hotel-chain_name">Chain name:</label>
                             <input type = "text" id = "Add-Hotel-chain_name" name = "chain_name" placeholder = "Chain Name" minlength = "1" maxlength = "20" required><br>
 
@@ -272,7 +272,7 @@
                     </div>
 
                     <div id = "Add-Customer" hidden = "true">
-                        <form>
+                        <form action="addC" method="POST">
                             <label for = "Add-Customer-ssn">SSN:</label>
                             <input type = "number" id = "Add-Customer-ssn" name = "ssn" placeholder = "SSN" min = "0" max = "999999999"required><br>
 
