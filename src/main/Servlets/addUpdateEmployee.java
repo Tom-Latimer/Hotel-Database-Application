@@ -1,6 +1,7 @@
 package Servlets;
 
 import DBModel.Customer;
+import DBModel.Employee;
 import Util.HibernateUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,14 +16,14 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 
-@WebServlet(name = "addUpdateCustomerServlet", urlPatterns = "/addC")
-public class addUpdateCustomerServlet extends HttpServlet {
+@WebServlet(name = "addUpdateEmployee", urlPatterns = "/addE")
+public class addUpdateEmployee extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String ssn = request.getParameter("ssn");
         String firstName = request.getParameter("first_name");
         String lastName = request.getParameter("last_name");
-        String dateOfRegistration = request.getParameter("date_of_registration");
+        String role = request.getParameter("role");
         String streetNumberStr = request.getParameter("street_number");
         String streetName = request.getParameter("street_name");
         String city = request.getParameter("city");
@@ -31,7 +32,6 @@ public class addUpdateCustomerServlet extends HttpServlet {
 
         String[] provinceCodes = {"AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT"};
         BigDecimal streetNumber;
-        LocalDate registrationDate;
         BigDecimal ssnBd = null;
 
 
@@ -62,10 +62,10 @@ public class addUpdateCustomerServlet extends HttpServlet {
                 lastName = lastName.toLowerCase();
             }
 
-            try {
-                registrationDate = LocalDate.parse(dateOfRegistration);
-            } catch (DateTimeParseException e) {
-                registrationDate = null;
+            if (role.isEmpty()) {
+                role = null;
+            } else {
+                role = role.toLowerCase();
             }
 
             if (streetNumberStr != null && !streetNumberStr.isEmpty()) {
@@ -114,7 +114,7 @@ public class addUpdateCustomerServlet extends HttpServlet {
             } else {
                 postalCode = null;
             }
-            addUpdateCustomer(ssnBd,firstName,lastName,registrationDate,streetName,city,province,postalCode,streetNumber);
+            addEmployee(ssnBd,firstName,lastName,role,streetName,city,province,postalCode,streetNumber);
             request.getRequestDispatcher("/databaseentry.jsp").forward(request,response);
         } catch (Exception e) {
             e.printStackTrace();
@@ -124,24 +124,24 @@ public class addUpdateCustomerServlet extends HttpServlet {
 
     }
 
-    private void addUpdateCustomer (BigDecimal ssn, String firstName, String lastName, LocalDate dateOfRegistration, String street, String city, String province, String postal, BigDecimal streetNumber) {
-        Customer cust = new Customer();
+    private void addEmployee (BigDecimal ssn, String firstName, String lastName, String role, String street, String city, String province, String postal, BigDecimal streetNumber) {
+        Employee employee = new Employee();
 
-        cust.setCity(city);
-        cust.setId(ssn);
-        cust.setPostal(postal);
-        cust.setStreetName(street);
-        cust.setProvince(province);
-        cust.setStreetNumber(streetNumber);
-        cust.setFirstName(firstName);
-        cust.setLastName(lastName);
-        cust.setDateOfRegistration(dateOfRegistration);
+        employee.setCity(city);
+        employee.setId(ssn);
+        employee.setPostal(postal);
+        employee.setStreetName(street);
+        employee.setProvince(province);
+        employee.setStreetNumber(streetNumber);
+        employee.setFirstName(firstName);
+        employee.setLastName(lastName);
+        employee.setRole(role);
 
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         session.beginTransaction();
 
-        session.saveOrUpdate(cust);
+        session.saveOrUpdate(employee);
         session.getTransaction().commit();
 
         session.close();

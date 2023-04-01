@@ -228,7 +228,7 @@
                     </div>
 
                     <div id = "Add-Employee" hidden = "true">
-                        <form>
+                        <form action="addE" method="POST">
                             <label for = "Add-Employee-ssn">SSN:</label>
                             <input type = "number" id = "Add-Employee-ssn" name = "ssn" placeholder = "SSN" min = "0" max = "999999999"required><br>
 
