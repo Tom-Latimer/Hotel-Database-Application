@@ -239,6 +239,16 @@ select city, hotel_name, room.*
 from hotel,room
 where room.hotel_id = hotel.hotel_id;
 
+/* Indexes */
+CREATE INDEX booking_index
+ON booking (start_date, end_date);
+
+CREATE INDEX room_cost_index
+ON room (price);
+
+CREATE INDEX hotel_name_index
+ON hotel (city,province);
+
 /* Data Insertion */
 
 INSERT INTO hotel_chain (chain_name, street_number, street_name, city, province, postal, phone_numbers, email_addresses)
