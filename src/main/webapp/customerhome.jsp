@@ -1,3 +1,6 @@
+<%@ page import = "DBModel.Room" %>
+<%@ page import = "java.util.List" %>
+<!DOCTYPE html>
 <html>
     <head>
         <title>CustomerHome</title>
@@ -16,11 +19,10 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">CHAIN</a>
-                    <a href="#">DATES</a>
-                    <a href="#">LOCATION</a>
-                    <a href="#">RATING</a>
-                    <a href="#">ROOM CAPACITY</a>
+                    <a href = "customerbrowse.html">CHAIN</a>
+                    <a href = "#">LOCATION</a>
+                    <a href = "#">RATING</a>
+                    <a href = "#">ROOM CAPACITY</a>
                 </div>
             </div>
             <a href="#"><i class="fa fa-fw fa-home"></i>home</a>
@@ -28,17 +30,39 @@
                 <i class="fa fa-fw fa-bars"></i>
             </a>
         </div>
-        <div class = "centerelements" id = "content">
-            <form action="queryServlet" method="POST">
-                <input type = "text" id = "locationcity" name = "locationcity" placeholder = "Enter your destination city"><br>
-                <input type = "number" id = "capacityguests" name = "capacityguests" placeholder = "Number of guests"><br>
-                <label for = "checkindate">Check in date:</label>
-                <input type = "date" id = "checkindate" name = "checkindate" placeholder = "Check in date:"><br>
-                <label for = "checkoutdate">Check out date:</label>
-                <input type = "date" id = "checkoutdate" name = "checkoutdate" placeholder = "Check out date:"><br>
-                <input type = "submit" value = "Search">
-            </form>
+        <div class = "main" id = "contentmain">
+            <div class = "centerelements" id = "content">
+                <form action="queryServlet" method="POST">
+                    <input type = "text" id = "locationcity" name = "locationcity" placeholder = "Enter your destination city"><br>
+                    <input type = "number" id = "capacityguests" name = "capacityguests" placeholder = "Number of guests"><br>
+                    <label for = "checkindate">Check in date:</label>
+                    <input type = "date" id = "checkindate" name = "checkindate" placeholder = "Check in date:"><br>
+                    <label for = "checkoutdate">Check out date:</label>
+                    <input type = "date" id = "checkoutdate" name = "checkoutdate" placeholder = "Check out date:"><br>
+                    <input type = "submit" value = "Search">
+                </form>
+
+                <%
+                List<Room> results = (List<Room>) request.getAttribute("results");
+                if (results != null) {
+                    for (Room room : results) {
+                %>
+                        <table class = "pricebox">
+                            <tr>
+                                <td><%= room.getId().getChainName() %></td>
+                                <td><%= room.getHotel().getHotelName() %></td>
+                                <td><%= room.getPrice() %></td>
+                                <td><%= room.getCapacity() %></td>
+                                <td><input type = "submit" value = "Reserve" style = "font-size:12px; float:right; background-color = #29335C;"></td>
+                            </tr>
+                        </table>
+                    <%
+                    }
+                }
+                %>
+            </div>
         </div>
+
         <script>
             function myFunction() {
                 var x = document.getElementById("myTopnav");

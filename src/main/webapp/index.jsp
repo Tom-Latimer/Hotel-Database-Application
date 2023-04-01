@@ -12,8 +12,7 @@
                 <h2>Sign in:</h2>
 
                 <a href = "customerhome.jsp" class = "button userbutton"> I am a customer </a>
-                <a href = "employeehome.jsp" class = "button userbutton"> I am an employee </a><br>
-                <a href = "databaseentry.jsp" class = "button userbutton1"> I am adding to the database</a>
+                <a href = "databaseentry.jsp" class = "button userbutton1"> I am an employee</a>
             </div>
         </div>
 

@@ -66,7 +66,7 @@ public class QueryFormServlet extends HttpServlet {
 
             List<Room> results = sendQuery(locationcity,capacity,inDate,outDate);
 
-            System.out.println("Here is the results:" + results);
+            request.setAttribute("results",results);
 
             request.getRequestDispatcher("/customerhome.jsp").forward(request,response);
 
